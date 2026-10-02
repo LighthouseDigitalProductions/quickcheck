@@ -113,8 +113,8 @@
 
 <header class="site">
   <div class="wrap">
-    <div class="brand">MTD Strategic<small>Insurance Solutions</small></div>
-    <div style="font-size:.8rem; color:var(--ink-soft);">Cost Control Behaviors™ QuickCheck</div>
+    <div class="brand"><span id="scBrandName">MTD Strategic</span><small id="scBrandTagline">Insurance Solutions</small></div>
+    <div style="font-size:.8rem; color:var(--ink-soft);" id="scHeaderSubtitle">Cost Control Behaviors™ QuickCheck</div>
   </div>
 </header>
 
@@ -159,7 +159,7 @@
         <p class="q-text" id="qText"></p>
         <div class="choices" id="qChoices"></div>
         <div class="quiz-nav">
-          <button class="btn btn-ghost" id="backBtn" onclick="prevQ()">Back</button>
+          <button class="btn btn-ghost" id="backBtn" onclick="prevQ()"></button>
           <span></span>
         </div>
       </div>
@@ -190,7 +190,7 @@
     <!-- ============ SCREEN 4: SNAPSHOT REPORT ============ -->
     <section id="screen-report" class="screen">
       <div class="print-bar">
-        <button class="btn btn-ghost" onclick="window.print()">Print / Save as PDF</button>
+        <button class="btn btn-ghost" onclick="window.print()" id="scReportPrintBtn"></button>
       </div>
       <div class="report-header">
         <img src="assets/mtd-logo.png" alt="MTD Strategic Insurance Solutions" class="report-logo">
@@ -201,9 +201,9 @@
       <div class="report-body">
         <table class="meta-table">
           <tr>
-            <td class="label">Completed by</td>
+            <td class="label" id="scReportMetaCompleted"></td>
             <td id="rptName"></td>
-            <td class="label">Assessment date</td>
+            <td class="label" id="scReportMetaDate"></td>
             <td id="rptDate"></td>
           </tr>
           <tr>
@@ -213,38 +213,38 @@
         </table>
 
         <div class="report-section">
-          <h2>Executive Summary</h2>
+          <h2 id="scReportHeadingExec"></h2>
           <p id="rptExecSummary"></p>
         </div>
 
         <div class="report-section">
-          <h2>1. Score Profile</h2>
+          <h2 id="scReportHeadingScore"></h2>
           <table class="score-table" id="rptScoreTable"></table>
         </div>
 
         <div class="report-section">
-          <h2>2. Notable Patterns</h2>
+          <h2 id="scReportHeadingPatterns"></h2>
           <p id="rptPatterns"></p>
         </div>
 
         <div class="report-section">
-          <h2>3. Interpretation of Results</h2>
+          <h2 id="scReportHeadingInterp"></h2>
           <div id="rptInterpretation"></div>
         </div>
 
         <div class="report-section">
-          <h2>4. Validate Ratings Through Operational Metrics</h2>
+          <h2 id="scReportHeadingValidate"></h2>
           <p id="scReportValidateIntro"></p>
           <table class="score-table" id="rptValidationTable"></table>
         </div>
 
         <div class="report-section">
-          <h2>5. Priority Follow-Up</h2>
+          <h2 id="scReportHeadingFollowup"></h2>
           <div id="rptFollowUp"></div>
         </div>
 
         <div class="report-section">
-          <h2>6. Closing Assessment</h2>
+          <h2 id="scReportHeadingClosing"></h2>
           <p id="rptClosing"></p>
         </div>
 
@@ -256,11 +256,11 @@
         <p style="font-size:.9rem; color:var(--ink-soft); margin:0 0 18px;" id="scReportBookingSub"></p>
         <form id="contactForm" onsubmit="return submitContactAndBook(event)" style="text-align:left; max-width:480px; margin:0 auto;">
           <div class="field-row">
-            <div><label for="c_email">Email</label><input id="c_email" type="email" required></div>
-            <div><label for="c_phone">Phone (optional)</label><input id="c_phone" type="tel" inputmode="numeric" maxlength="14" placeholder="(555) 555-5555" oninput="formatPhoneInput(this)"></div>
+            <div><label for="c_email" id="scReportLabelEmail"></label><input id="c_email" type="email" required></div>
+            <div><label for="c_phone" id="scReportLabelPhone"></label><input id="c_phone" type="tel" inputmode="numeric" maxlength="14" placeholder="(555) 555-5555" oninput="formatPhoneInput(this)"></div>
           </div>
           <div class="field-row">
-            <div><label for="c_state">State / territory</label>
+            <div><label for="c_state" id="scReportLabelState"></label>
               <select id="c_state" required>
                 <option value="">Select…</option>
                 <option value="AL">AL</option><option value="AK">AK</option><option value="AZ">AZ</option><option value="AR">AR</option>
@@ -279,7 +279,7 @@
                 <option value="AS">AS</option><option value="GU">GU</option><option value="MP">MP</option><option value="PR">PR</option><option value="VI">VI</option>
               </select>
             </div>
-            <div><label for="c_renewal">Workers' comp renewal month</label>
+            <div><label for="c_renewal" id="scReportLabelRenewal"></label>
               <select id="c_renewal" required>
                 <option value="">Select…</option>
                 <option>January</option><option>February</option><option>March</option><option>April</option>
@@ -290,7 +290,7 @@
           </div>
           <div class="field-row">
             <div class="full">
-              <label for="c_interest">I'm interested in</label>
+              <label for="c_interest" id="scReportLabelInterest"></label>
               <select id="c_interest" required>
                 <option value="">Select one…</option>
                 <option>Advisory support</option>
@@ -312,8 +312,8 @@
 
 <footer class="site">
   <div class="wrap">
-    <span>© 2026 MTD Strategic Insurance Solutions, LLC</span>
-    <span>Cost Control Behaviors™ is a trademark of MTD Strategic Insurance Solutions, LLC</span>
+    <span id="scFooterCopyright"></span>
+    <span id="scFooterTrademark"></span>
   </div>
 </footer>
 
@@ -360,8 +360,21 @@ const siteContentReady = fetch('site-content.json')
   .then(data => { populateSiteContent(data); })
   .catch(err => { console.error('Failed to load site-content.json:', err); });
 
+let SITE_CONTENT = {};
+
 function populateSiteContent(c){
+  SITE_CONTENT = c; // stashed so renderReport() can reach report.* strings too
   const setText = (id, val) => { const el = document.getElementById(id); if (el && val != null) el.textContent = val; };
+
+  const global = c.global || {};
+  setText('scBrandName', global.brand_name);
+  setText('scBrandTagline', global.brand_tagline);
+  setText('scHeaderSubtitle', global.header_subtitle);
+  setText('scFooterCopyright', global.footer_copyright);
+  setText('scFooterTrademark', global.footer_trademark);
+
+  const quiz = c.quiz || {};
+  setText('backBtn', quiz.back_button);
 
   const intro = c.intro || {};
   setText('scIntroTitle', intro.title);
@@ -405,8 +418,23 @@ function populateSiteContent(c){
   const report = c.report || {};
   setText('scReportKicker', report.kicker);
   setText('scReportTitle', report.title);
+  setText('scReportPrintBtn', report.print_button);
+  setText('scReportMetaCompleted', report.meta_completed_by);
+  setText('scReportMetaDate', report.meta_assessment_date);
   setText('scReportBasis', report.report_basis);
+  setText('scReportHeadingExec', report.heading_exec_summary);
+  setText('scReportHeadingScore', report.heading_score_profile);
+  setText('scReportHeadingPatterns', report.heading_patterns);
+  setText('scReportHeadingInterp', report.heading_interpretation);
+  setText('scReportHeadingValidate', report.heading_validate);
   setText('scReportValidateIntro', report.validate_intro);
+  setText('scReportHeadingFollowup', report.heading_followup);
+  setText('scReportHeadingClosing', report.heading_closing);
+  setText('scReportLabelEmail', report.contact_email_label);
+  setText('scReportLabelPhone', report.contact_phone_label);
+  setText('scReportLabelState', report.contact_state_label);
+  setText('scReportLabelRenewal', report.contact_renewal_label);
+  setText('scReportLabelInterest', report.contact_interest_label);
   setText('scReportBookingHeading', report.booking_heading);
   setText('scReportBookingSub', report.booking_sub);
   setText('scReportBookingBtn', report.booking_button);
@@ -597,7 +625,10 @@ function renderReport(){
     + `Because this Snapshot is self-reported, these ratings should be treated as a starting perception baseline to validate against real operating data, not a final conclusion.`;
 
   // Score Profile table
-  let scoreHtml = '<tr><th>Cost Control Behavior</th><th style="width:160px;">Rating</th></tr>';
+  const rpt = SITE_CONTENT.report || {};
+  const col1 = rpt.score_table_col1 || 'Cost Control Behavior';
+  const col2 = rpt.score_table_col2 || 'Rating';
+  let scoreHtml = `<tr><th>${col1}</th><th style="width:160px;">${col2}</th></tr>`;
   ratings.forEach(r => {
     const tier = TIER[r.pts];
     scoreHtml += `<tr><td>${r.q.title.replace(/^\d+\.\s*/,'')}</td><td><span class="rating-pill"><span class="rating-num ${tier.class}">${r.pts}</span><span class="tier-label">${tier.label}</span></span></td></tr>`;
@@ -625,7 +656,9 @@ function renderReport(){
   document.getElementById('rptInterpretation').innerHTML = interp;
 
   // Validation measures table (static, all 10)
-  let valHtml = '<tr><th>Cost Control Behavior</th><th>Example Validation Measure</th></tr>';
+  const valCol1 = rpt.validation_table_col1 || 'Cost Control Behavior';
+  const valCol2 = rpt.validation_table_col2 || 'Example Validation Measure';
+  let valHtml = `<tr><th>${valCol1}</th><th>${valCol2}</th></tr>`;
   QUESTIONS.forEach(q => {
     valHtml += `<tr><td>${q.title.replace(/^\d+\.\s*/,'')}</td><td>${q.validation}</td></tr>`;
   });
