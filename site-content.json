@@ -6,7 +6,13 @@
     "instructions": "Answer each statement based on how your organization operates in practice — not simply on what is written in a policy or procedure. Select the response that best reflects how consistently each behavior is carried out across the organization.",
     "estimated_time": "Estimated completion time: 5–7 minutes",
     "start_button": "Start the QuickCheck",
-    "disclaimer": "The Cost Control Behaviors™ QuickCheck is intended to provide a high-level operational assessment and should not be considered legal, safety, or insurance advice. It does not guarantee insurance savings, premium reductions, or underwriting results."
+    "disclaimer": "The Cost Control Behaviors™ QuickCheck is intended to provide a high-level operational assessment and should not be considered legal, safety, or insurance advice. It does not guarantee insurance savings, premium reductions, or underwriting results.",
+    "respondent_label": "Respondent Information",
+    "label_org": "Organization",
+    "label_name": "Respondent Name",
+    "label_role": "Role or Department",
+    "label_industry": "Industry",
+    "label_employees": "Approximate Number of Employees"
   },
   "thankyou": {
     "title": "Thank You",

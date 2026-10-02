@@ -131,18 +131,18 @@
       <p class="lede" id="scIntroInstructions"></p>
       <p class="lede" style="font-weight:600; color:var(--ink);" id="scIntroEstTime"></p>
 
-      <div class="section-label">Respondent Information</div>
+      <div class="section-label" id="scIntroRespondentLabel"></div>
       <form id="respondentForm" onsubmit="return startQuiz(event)">
         <div class="field-row">
-          <div><label for="r_org">Organization</label><input id="r_org" required></div>
-          <div><label for="r_name">Respondent Name</label><input id="r_name" required></div>
+          <div><label for="r_org" id="scIntroLabelOrg"></label><input id="r_org" required></div>
+          <div><label for="r_name" id="scIntroLabelName"></label><input id="r_name" required></div>
         </div>
         <div class="field-row">
-          <div><label for="r_role">Role or Department</label><input id="r_role" required></div>
-          <div><label for="r_industry">Industry</label><input id="r_industry" required></div>
+          <div><label for="r_role" id="scIntroLabelRole"></label><input id="r_role" required></div>
+          <div><label for="r_industry" id="scIntroLabelIndustry"></label><input id="r_industry" required></div>
         </div>
         <div class="field-row">
-          <div class="full"><label for="r_employees">Approximate Number of Employees</label><input id="r_employees" type="number" min="1" required></div>
+          <div class="full"><label for="r_employees" id="scIntroLabelEmployees"></label><input id="r_employees" type="number" min="1" required></div>
         </div>
         <button class="btn btn-primary" type="submit" style="margin-top:10px;" id="scIntroStartBtn"></button>
       </form>
@@ -371,6 +371,12 @@ function populateSiteContent(c){
   setText('scIntroEstTime', intro.estimated_time);
   setText('scIntroStartBtn', intro.start_button);
   setText('scIntroDisclaimer', intro.disclaimer);
+  setText('scIntroRespondentLabel', intro.respondent_label);
+  setText('scIntroLabelOrg', intro.label_org);
+  setText('scIntroLabelName', intro.label_name);
+  setText('scIntroLabelRole', intro.label_role);
+  setText('scIntroLabelIndustry', intro.label_industry);
+  setText('scIntroLabelEmployees', intro.label_employees);
 
   const ty = c.thankyou || {};
   setText('scThanksTitle', ty.title);
