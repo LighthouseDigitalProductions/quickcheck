@@ -4,9 +4,24 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>QuickCheck Content Editor</title>
-  <!-- Decap CMS: a free, open-source visual editor for git-backed sites. -->
-  <script src="https://unpkg.com/decap-cms@^3/dist/decap-cms.js"></script>
+  <!-- Netlify Identity: handles Martin's login (email + password). -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
+  <script>
+    // Sends people straight into the editor right after they confirm
+    // their invite/login, instead of leaving them on a blank page.
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", (user) => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
+  </script>
+  <!-- Decap CMS: a free, open-source visual editor for git-backed sites. -->
+  <script src="https://unpkg.com/decap-cms@^3/dist/decap-cms.js"></script>
 </body>
 </html>
