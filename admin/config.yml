@@ -30,3 +30,59 @@ collections:
               - { label: "Question text (shown during the quiz)", name: "text", widget: "text" }
               - { label: "How this gets validated (shown in the final report)", name: "validation", widget: "text" }
               - { label: "How to improve (shown in the final report)", name: "improve", widget: "text" }
+
+  - name: "site_content"
+    label: "Site Text"
+    files:
+      - file: "site-content.json"
+        label: "Page Wording"
+        name: "site_content"
+        description: "Edit the wording on the intro page, the thank-you page, and the labels on the Snapshot Report. Note: the Snapshot Report's Executive Summary, Patterns, Interpretation, Follow-Up, and Closing sections are NOT here — those are written automatically from each person's quiz answers and can't be edited directly."
+        fields:
+          - label: "Intro Page"
+            name: "intro"
+            widget: "object"
+            fields:
+              - { label: "Page title", name: "title", widget: "string" }
+              - { label: "Paragraph 1", name: "lede_1", widget: "text" }
+              - { label: "Paragraph 2", name: "lede_2", widget: "text" }
+              - { label: "Instructions", name: "instructions", widget: "text" }
+              - { label: "Estimated time line", name: "estimated_time", widget: "string" }
+              - { label: "\"Start\" button text", name: "start_button", widget: "string" }
+              - { label: "Disclaimer", name: "disclaimer", widget: "text" }
+          - label: "Thank You Page"
+            name: "thankyou"
+            widget: "object"
+            fields:
+              - { label: "Page title", name: "title", widget: "string" }
+              - { label: "Subtitle", name: "subtitle", widget: "string" }
+              - { label: "Intro paragraph", name: "lede", widget: "text" }
+              - { label: "\"What You'll Receive\" section label", name: "receive_label", widget: "string" }
+              - { label: "\"What You'll Receive\" intro line", name: "receive_intro", widget: "string" }
+              - label: "\"What You'll Receive\" checklist items"
+                name: "receive_items"
+                widget: "list"
+                field: { label: "Item", name: "item", widget: "string" }
+              - { label: "\"Rating Categories\" section label", name: "categories_label", widget: "string" }
+              - { label: "\"Rating Categories\" intro line", name: "categories_intro", widget: "string" }
+              - label: "Rating category cards"
+                name: "categories"
+                widget: "list"
+                summary: "{{fields.title}}"
+                fields:
+                  - { label: "Category name", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "string" }
+              - { label: "Tagline", name: "tagline", widget: "string" }
+              - { label: "\"Show my Snapshot Report\" button text", name: "report_button", widget: "string" }
+              - { label: "Disclaimer", name: "disclaimer", widget: "text" }
+          - label: "Snapshot Report — Static Labels Only"
+            name: "report"
+            widget: "object"
+            fields:
+              - { label: "Header kicker (small text above the title)", name: "kicker", widget: "string" }
+              - { label: "Header title", name: "title", widget: "string" }
+              - { label: "\"Report basis\" line", name: "report_basis", widget: "string" }
+              - { label: "Section 4 intro line", name: "validate_intro", widget: "text" }
+              - { label: "Booking box heading", name: "booking_heading", widget: "string" }
+              - { label: "Booking box subtext", name: "booking_sub", widget: "string" }
+              - { label: "Booking button text", name: "booking_button", widget: "string" }

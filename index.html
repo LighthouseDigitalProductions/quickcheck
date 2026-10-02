@@ -123,13 +123,13 @@
 
     <!-- ============ SCREEN 1: INTRO / RESPONDENT INFO (PDF page 1) ============ -->
     <section id="screen-intro" class="screen active">
-      <h1 class="page-title">Discover the Operational Behaviors Influencing Your Workers' Compensation Results</h1>
-      <p class="lede">Workers' compensation outcomes are shaped long before a claim appears on a loss run or a premium is calculated. Everyday management practices — how quickly injuries are reported, how supervisors respond, how claims are monitored, how employees return to work — can significantly influence claim outcomes and long-term insurance costs.</p>
-      <p class="lede">The Cost Control Behaviors™ QuickCheck provides a high-level snapshot of the operational practices that may be affecting your organization's workers' compensation performance.</p>
+      <h1 class="page-title" id="scIntroTitle"></h1>
+      <p class="lede" id="scIntroLede1"></p>
+      <p class="lede" id="scIntroLede2"></p>
 
       <div class="section-label">Instructions</div>
-      <p class="lede">Answer each statement based on how your organization operates in practice — not simply on what is written in a policy or procedure. Select the response that best reflects how consistently each behavior is carried out across the organization.</p>
-      <p class="lede" style="font-weight:600; color:var(--ink);">Estimated completion time: 5–7 minutes</p>
+      <p class="lede" id="scIntroInstructions"></p>
+      <p class="lede" style="font-weight:600; color:var(--ink);" id="scIntroEstTime"></p>
 
       <div class="section-label">Respondent Information</div>
       <form id="respondentForm" onsubmit="return startQuiz(event)">
@@ -144,10 +144,10 @@
         <div class="field-row">
           <div class="full"><label for="r_employees">Approximate Number of Employees</label><input id="r_employees" type="number" min="1" required></div>
         </div>
-        <button class="btn btn-primary" type="submit" style="margin-top:10px;">Start the QuickCheck</button>
+        <button class="btn btn-primary" type="submit" style="margin-top:10px;" id="scIntroStartBtn"></button>
       </form>
 
-      <p class="disclaimer">The Cost Control Behaviors™ QuickCheck is intended to provide a high-level operational assessment and should not be considered legal, safety, or insurance advice. It does not guarantee insurance savings, premium reductions, or underwriting results.</p>
+      <p class="disclaimer" id="scIntroDisclaimer"></p>
     </section>
 
     <!-- ============ SCREEN 2: QUIZ ============ -->
@@ -167,35 +167,24 @@
 
     <!-- ============ SCREEN 3: THANK YOU (PDF thank-you page) ============ -->
     <section id="screen-thankyou" class="screen">
-      <h1 class="page-title">Thank You</h1>
-      <h2 class="page-sub">Thank you for completing the Cost Control Behaviors™ Snapshot</h2>
-      <p class="lede">Your responses provide an initial snapshot of the operational behaviors that influence your organization's workers' compensation performance.</p>
+      <h1 class="page-title" id="scThanksTitle"></h1>
+      <h2 class="page-sub" id="scThanksSubtitle"></h2>
+      <p class="lede" id="scThanksLede"></p>
 
-      <div class="section-label">What You'll Receive</div>
-      <p class="lede">Your personalized Cost Control Behaviors™ Snapshot Report is ready now and includes:</p>
-      <ul class="checklist">
-        <li>Your organization's Cost Control Behaviors™ ratings</li>
-        <li>An Executive Summary of your results</li>
-        <li>Your organization's strongest operational behaviors</li>
-        <li>Key opportunities for improvement</li>
-        <li>Practical recommendations to help strengthen future workers' compensation outcomes</li>
-      </ul>
+      <div class="section-label" id="scThanksReceiveLabel"></div>
+      <p class="lede" id="scThanksReceiveIntro"></p>
+      <ul class="checklist" id="scThanksReceiveItems"></ul>
 
-      <div class="section-label">Overall Rating Categories</div>
-      <p class="lede">Each behavior in your Snapshot Report is placed into one of the following categories:</p>
-      <div class="cat-grid">
-        <div class="cat-card"><h4>Strong Foundation</h4><p>Well established and consistently practiced.</p></div>
-        <div class="cat-card"><h4>Developing</h4><p>Good practices in place, with room to improve consistency.</p></div>
-        <div class="cat-card"><h4>Needs Attention</h4><p>Could be strengthened to improve future outcomes.</p></div>
-        <div class="cat-card"><h4>Priority Improvement</h4><p>Significant opportunity to reduce risk and cost.</p></div>
-      </div>
-      <p class="tagline">Your premium is the scoreboard. Cost Control Behaviors™ are the game.</p>
+      <div class="section-label" id="scThanksCatLabel"></div>
+      <p class="lede" id="scThanksCatIntro"></p>
+      <div class="cat-grid" id="scThanksCatGrid"></div>
+      <p class="tagline" id="scThanksTagline"></p>
 
       <div class="card" style="margin-top:10px; text-align:center;">
-        <button class="btn btn-primary" onclick="showReport()">Show my Snapshot Report</button>
+        <button class="btn btn-primary" onclick="showReport()" id="scThanksReportBtn"></button>
       </div>
 
-      <p class="disclaimer">The Cost Control Behaviors™ Snapshot is intended to provide a high-level operational assessment and should not be considered legal, safety, or insurance advice.</p>
+      <p class="disclaimer" id="scThanksDisclaimer"></p>
     </section>
 
     <!-- ============ SCREEN 4: SNAPSHOT REPORT ============ -->
@@ -205,8 +194,8 @@
       </div>
       <div class="report-header">
         <img src="assets/mtd-logo.png" alt="MTD Strategic Insurance Solutions" class="report-logo">
-        <div class="kicker">COST CONTROL BEHAVIORS™</div>
-        <h1>Snapshot Report</h1>
+        <div class="kicker" id="scReportKicker"></div>
+        <h1 id="scReportTitle"></h1>
         <div class="org" id="rptOrg"></div>
       </div>
       <div class="report-body">
@@ -219,7 +208,7 @@
           </tr>
           <tr>
             <td class="label">Report basis</td>
-            <td colspan="3">Self-assessed Cost Control Behaviors™ QuickCheck baseline</td>
+            <td colspan="3" id="scReportBasis"></td>
           </tr>
         </table>
 
@@ -245,7 +234,7 @@
 
         <div class="report-section">
           <h2>4. Validate Ratings Through Operational Metrics</h2>
-          <p>Because this Snapshot reflects self-reported perception rather than measured outcomes, each behavior should be checked against a small set of real operating indicators.</p>
+          <p id="scReportValidateIntro"></p>
           <table class="score-table" id="rptValidationTable"></table>
         </div>
 
@@ -263,8 +252,8 @@
       </div>
 
       <div style="text-align:center; margin-top:28px; padding:28px; background:var(--green-pale); border-radius:var(--radius);">
-        <p style="font-family:var(--serif); font-size:1.1rem; color:var(--ink); margin:0 0 4px;">Want to walk through these results together?</p>
-        <p style="font-size:.9rem; color:var(--ink-soft); margin:0 0 18px;">Share a few details and book a short call to review your Snapshot and talk through next steps.</p>
+        <p style="font-family:var(--serif); font-size:1.1rem; color:var(--ink); margin:0 0 4px;" id="scReportBookingHeading"></p>
+        <p style="font-size:.9rem; color:var(--ink-soft); margin:0 0 18px;" id="scReportBookingSub"></p>
         <form id="contactForm" onsubmit="return submitContactAndBook(event)" style="text-align:left; max-width:480px; margin:0 auto;">
           <div class="field-row">
             <div><label for="c_email">Email</label><input id="c_email" type="email" required></div>
@@ -312,7 +301,7 @@
             </div>
           </div>
           <div style="text-align:center; margin-top:14px;">
-            <button class="btn btn-primary" type="submit">Book a Strategy Conversation</button>
+            <button class="btn btn-primary" type="submit" id="scReportBookingBtn"></button>
           </div>
         </form>
       </div>
@@ -359,6 +348,63 @@ const questionsReady = fetch('questions.json')
   .then(r => r.json())
   .then(data => { QUESTIONS = data.questions; })
   .catch(err => { console.error('Failed to load questions.json:', err); });
+
+/* All other on-page copy (intro page, thank-you page, and the static
+   labels on the Snapshot Report) lives in site-content.json for the same
+   reason — editable through /admin without touching code. The Snapshot
+   Report's actual narrative (Executive Summary, Patterns, etc.) is NOT
+   here — that's generated from the quiz scores in renderReport() below,
+   since it has to change based on each person's answers. */
+const siteContentReady = fetch('site-content.json')
+  .then(r => r.json())
+  .then(data => { populateSiteContent(data); })
+  .catch(err => { console.error('Failed to load site-content.json:', err); });
+
+function populateSiteContent(c){
+  const setText = (id, val) => { const el = document.getElementById(id); if (el && val != null) el.textContent = val; };
+
+  const intro = c.intro || {};
+  setText('scIntroTitle', intro.title);
+  setText('scIntroLede1', intro.lede_1);
+  setText('scIntroLede2', intro.lede_2);
+  setText('scIntroInstructions', intro.instructions);
+  setText('scIntroEstTime', intro.estimated_time);
+  setText('scIntroStartBtn', intro.start_button);
+  setText('scIntroDisclaimer', intro.disclaimer);
+
+  const ty = c.thankyou || {};
+  setText('scThanksTitle', ty.title);
+  setText('scThanksSubtitle', ty.subtitle);
+  setText('scThanksLede', ty.lede);
+  setText('scThanksReceiveLabel', ty.receive_label);
+  setText('scThanksReceiveIntro', ty.receive_intro);
+  setText('scThanksCatLabel', ty.categories_label);
+  setText('scThanksCatIntro', ty.categories_intro);
+  setText('scThanksTagline', ty.tagline);
+  setText('scThanksReportBtn', ty.report_button);
+  setText('scThanksDisclaimer', ty.disclaimer);
+
+  const itemsEl = document.getElementById('scThanksReceiveItems');
+  if (itemsEl && Array.isArray(ty.receive_items)){
+    itemsEl.innerHTML = ty.receive_items.map(item => `<li>${item}</li>`).join('');
+  }
+
+  const catGrid = document.getElementById('scThanksCatGrid');
+  if (catGrid && Array.isArray(ty.categories)){
+    catGrid.innerHTML = ty.categories.map(cat =>
+      `<div class="cat-card"><h4>${cat.title}</h4><p>${cat.description}</p></div>`
+    ).join('');
+  }
+
+  const report = c.report || {};
+  setText('scReportKicker', report.kicker);
+  setText('scReportTitle', report.title);
+  setText('scReportBasis', report.report_basis);
+  setText('scReportValidateIntro', report.validate_intro);
+  setText('scReportBookingHeading', report.booking_heading);
+  setText('scReportBookingSub', report.booking_sub);
+  setText('scReportBookingBtn', report.booking_button);
+}
 
 /* Where lead submissions get sent — paste the "Catch Hook" webhook URL
    from the Zapier Zap (see setup notes) here once it's built. Leaving
