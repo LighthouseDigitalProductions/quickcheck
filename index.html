@@ -70,10 +70,12 @@
   .tagline{font-family:var(--serif); font-style:italic; color:var(--ink-soft); text-align:center; margin:30px 0 10px; font-size:1rem;}
 
   /* Report */
-  .report-header{background:var(--green-deep); color:#fff; padding:32px 36px; border-radius:var(--radius) var(--radius) 0 0;}
+  .report-header{position:relative; background:var(--green-deep); color:#fff; padding:32px 36px; border-radius:var(--radius) var(--radius) 0 0;}
   .report-header .kicker{font-size:.8rem; letter-spacing:.03em; color:#BFE1CC; margin-bottom:4px;}
   .report-header h1{font-family:var(--serif); font-size:1.6rem; margin:0 0 4px; color:#fff;}
   .report-header .org{font-size:1.05rem; color:#DCEFE1;}
+  .report-logo{position:absolute; top:20px; right:24px; max-width:130px; height:auto; background:#fff; padding:8px 10px; border-radius:4px;}
+  @media (max-width:560px){.report-logo{position:static; display:block; margin:0 0 14px;}}
   .report-body{background:var(--card); border:1px solid var(--line); border-top:none; border-radius:0 0 var(--radius) var(--radius); padding:36px;}
   .meta-table{width:100%; border-collapse:collapse; margin-bottom:28px; font-size:.85rem;}
   .meta-table td{padding:10px 14px; border:1px solid var(--line); vertical-align:top;}
@@ -202,6 +204,7 @@
         <button class="btn btn-ghost" onclick="window.print()">Print / Save as PDF</button>
       </div>
       <div class="report-header">
+        <img src="assets/mtd-logo.png" alt="MTD Strategic Insurance Solutions" class="report-logo">
         <div class="kicker">COST CONTROL BEHAVIORS™</div>
         <h1>Snapshot Report</h1>
         <div class="org" id="rptOrg"></div>
