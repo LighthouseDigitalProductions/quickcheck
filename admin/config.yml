@@ -39,6 +39,26 @@ collections:
         name: "site_content"
         description: "Edit the wording on the intro page, the thank-you page, and the labels on the Snapshot Report. Note: the Snapshot Report's Executive Summary, Patterns, Interpretation, Follow-Up, and Closing sections are NOT here — those are written automatically from each person's quiz answers and can't be edited directly."
         fields:
+          - label: "Quiz Answer Scale (used for every question)"
+            name: "scale"
+            widget: "object"
+            hint: "The 5 choices shown for every question, from the most-consistently-practiced to the least. Don't reorder these fields — each one is tied to its point value."
+            fields:
+              - { label: "Highest (5 points)", name: "pts_5", widget: "string" }
+              - { label: "4 points", name: "pts_4", widget: "string" }
+              - { label: "3 points", name: "pts_3", widget: "string" }
+              - { label: "2 points", name: "pts_2", widget: "string" }
+              - { label: "Lowest (1 point)", name: "pts_1", widget: "string" }
+          - label: "Report Rating-Tier Labels"
+            name: "tiers"
+            widget: "object"
+            hint: "The short label shown next to each score (1-5) in the report's score table. Don't reorder these fields — each one is tied to its point value."
+            fields:
+              - { label: "Highest (5 points)", name: "pts_5", widget: "string" }
+              - { label: "4 points", name: "pts_4", widget: "string" }
+              - { label: "3 points", name: "pts_3", widget: "string" }
+              - { label: "2 points", name: "pts_2", widget: "string" }
+              - { label: "Lowest (1 point)", name: "pts_1", widget: "string" }
           - label: "Header & Footer (shown on every page)"
             name: "global"
             widget: "object"
