@@ -190,8 +190,30 @@
       </div>
       <p class="tagline">Your premium is the scoreboard. Cost Control Behaviors™ are the game.</p>
 
-      <div class="card" style="margin-top:10px; text-align:center;">
-        <button class="btn btn-primary" onclick="showReport()">Show my Snapshot Report</button>
+      <div class="card" style="margin-top:10px;">
+        <form id="contactForm" onsubmit="return showReport(event)">
+          <div class="field-row">
+            <div><label for="c_email">Email</label><input id="c_email" type="email" required></div>
+            <div><label for="c_phone">Phone (optional)</label><input id="c_phone" type="tel"></div>
+          </div>
+          <div class="field-row">
+            <div><label for="c_state">State / territory</label><input id="c_state" required></div>
+            <div><label for="c_renewal">Workers' comp renewal month</label><input id="c_renewal" placeholder="e.g. March" required></div>
+          </div>
+          <div class="field-row">
+            <div class="full">
+              <label for="c_interest">I'm interested in</label>
+              <select id="c_interest" required>
+                <option value="">Select one…</option>
+                <option>Advisory support</option>
+                <option>An insurance review</option>
+                <option>Both</option>
+                <option>Just my results for now</option>
+              </select>
+            </div>
+          </div>
+          <button class="btn btn-primary" type="submit" style="margin-top:4px;">Show my Snapshot Report</button>
+        </form>
       </div>
 
       <p class="disclaimer">The Cost Control Behaviors™ Snapshot is intended to provide a high-level operational assessment and should not be considered legal, safety, or insurance advice.</p>
@@ -403,9 +425,17 @@ function prevQ(){
   if (current > 0){ current--; renderQ(); }
 }
 
-function showReport(){
+function showReport(e){
+  e.preventDefault();
+  respondent.email = document.getElementById('c_email').value;
+  respondent.phone = document.getElementById('c_phone').value;
+  respondent.state = document.getElementById('c_state').value;
+  respondent.renewal_month = document.getElementById('c_renewal').value;
+  respondent.interest = document.getElementById('c_interest').value;
+
   renderReport();
   showScreen('screen-report');
+  return false;
 }
 
 function renderReport(){
