@@ -164,15 +164,14 @@
       </div>
     </section>
 
-    <!-- ============ SCREEN 3: THANK YOU (PDF thank-you page) + CONTACT GATE ============ -->
+    <!-- ============ SCREEN 3: THANK YOU (PDF thank-you page) ============ -->
     <section id="screen-thankyou" class="screen">
       <h1 class="page-title">Thank You</h1>
       <h2 class="page-sub">Thank you for completing the Cost Control Behaviors™ Snapshot</h2>
       <p class="lede">Your responses provide an initial snapshot of the operational behaviors that influence your organization's workers' compensation performance.</p>
-      <p class="lede">Your completed Snapshot will be reviewed using the Cost Control Behaviors™ Framework and analyzed to identify operational strengths and opportunities for improvement.</p>
 
       <div class="section-label">What You'll Receive</div>
-      <p class="lede">Following our review, you will receive a personalized Cost Control Behaviors™ Snapshot Report, which includes:</p>
+      <p class="lede">Your personalized Cost Control Behaviors™ Snapshot Report is ready now and includes:</p>
       <ul class="checklist">
         <li>Your organization's Cost Control Behaviors™ ratings</li>
         <li>An Executive Summary of your results</li>
@@ -191,46 +190,21 @@
       </div>
       <p class="tagline">Your premium is the scoreboard. Cost Control Behaviors™ are the game.</p>
 
-      <div class="card" style="margin-top:10px;">
-        <h3 style="font-family:var(--serif); font-size:1.1rem; margin:0 0 6px; color:var(--green-deep);">Get your Results Report now</h3>
-        <p style="font-size:.9rem; color:var(--ink-soft); margin:0 0 18px;">Share a few contact details and we'll email you a copy, and reveal your report below.</p>
-        <form id="contactForm" onsubmit="return submitContact(event)">
-          <div class="field-row">
-            <div><label for="c_email">Email</label><input id="c_email" type="email" required></div>
-            <div><label for="c_phone">Phone (optional)</label><input id="c_phone" type="tel"></div>
-          </div>
-          <div class="field-row">
-            <div><label for="c_state">State / territory</label><input id="c_state" required></div>
-            <div><label for="c_renewal">Workers' comp renewal month</label><input id="c_renewal" placeholder="e.g. March" required></div>
-          </div>
-          <div class="field-row">
-            <div class="full">
-              <label for="c_interest">I'm interested in</label>
-              <select id="c_interest" required>
-                <option value="">Select one…</option>
-                <option>Advisory support</option>
-                <option>An insurance review</option>
-                <option>Both</option>
-                <option>Just my results for now</option>
-              </select>
-            </div>
-          </div>
-          <button class="btn btn-primary" type="submit">Show My Results Report</button>
-          <div id="formMsg" style="font-size:.85rem; margin-top:12px;"></div>
-        </form>
+      <div class="card" style="margin-top:10px; text-align:center;">
+        <button class="btn btn-primary" onclick="showReport()">Show my Snapshot Report</button>
       </div>
 
       <p class="disclaimer">The Cost Control Behaviors™ Snapshot is intended to provide a high-level operational assessment and should not be considered legal, safety, or insurance advice.</p>
     </section>
 
-    <!-- ============ SCREEN 4: RESULTS REPORT ============ -->
+    <!-- ============ SCREEN 4: SNAPSHOT REPORT ============ -->
     <section id="screen-report" class="screen">
       <div class="print-bar">
         <button class="btn btn-ghost" onclick="window.print()">Print / Save as PDF</button>
       </div>
       <div class="report-header">
         <div class="kicker">COST CONTROL BEHAVIORS™</div>
-        <h1>QuickCheck Results Report</h1>
+        <h1>Snapshot Report</h1>
         <div class="org" id="rptOrg"></div>
       </div>
       <div class="report-body">
@@ -368,9 +342,6 @@ const QUESTIONS = [
     improve: "Assign clear ownership for workers' compensation performance and put a recurring leadership review on the calendar so these behaviors are actively managed, not just assumed." },
 ];
 
-/* Where lead submissions get sent (Zapier webhook, Formspree, etc). */
-const LEAD_ENDPOINT = "https://formspree.io/f/REPLACE_WITH_YOUR_FORM_ID";
-
 /* ===================== app logic — no edits needed below ===================== */
 
 let current = 0;
@@ -432,40 +403,9 @@ function prevQ(){
   if (current > 0){ current--; renderQ(); }
 }
 
-async function submitContact(e){
-  e.preventDefault();
-  const msg = document.getElementById('formMsg');
-  const payload = {
-    ...respondent,
-    email: document.getElementById('c_email').value,
-    phone: document.getElementById('c_phone').value,
-    state: document.getElementById('c_state').value,
-    renewal_month: document.getElementById('c_renewal').value,
-    interest: document.getElementById('c_interest').value,
-    ratings: QUESTIONS.map((q,i) => ({ behavior: q.title, rating: SCALE[answers[i]].pts })),
-    source: "Cost Control Behaviors QuickCheck"
-  };
-
-  msg.textContent = 'Sending…';
-  msg.style.color = 'var(--ink-soft)';
-
-  try {
-    const res = await fetch(LEAD_ENDPOINT, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify(payload)
-    });
-    if (!res.ok) throw new Error('bad response');
-    msg.textContent = 'Sent — a copy is on its way to your inbox.';
-    msg.style.color = 'var(--green-deep)';
-  } catch (err){
-    msg.textContent = "That didn't go through, but your report is shown below. Email info@mtdstrategic.com if you'd like a copy sent.";
-    msg.style.color = 'var(--danger)';
-  }
-
+function showReport(){
   renderReport();
   showScreen('screen-report');
-  return false;
 }
 
 function renderReport(){
