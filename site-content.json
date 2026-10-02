@@ -1,4 +1,18 @@
 {
+  "scale": {
+    "pts_5": "Consistently",
+    "pts_4": "Usually",
+    "pts_3": "Sometimes",
+    "pts_2": "Rarely",
+    "pts_1": "Not in Place"
+  },
+  "tiers": {
+    "pts_5": "Strength",
+    "pts_4": "Solid Practice",
+    "pts_3": "Developing",
+    "pts_2": "Needs Attention",
+    "pts_1": "Priority Gap"
+  },
   "global": {
     "brand_name": "MTD Strategic",
     "brand_tagline": "Insurance Solutions",

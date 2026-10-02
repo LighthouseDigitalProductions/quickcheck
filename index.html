@@ -366,6 +366,16 @@ function populateSiteContent(c){
   SITE_CONTENT = c; // stashed so renderReport() can reach report.* strings too
   const setText = (id, val) => { const el = document.getElementById(id); if (el && val != null) el.textContent = val; };
 
+  // Quiz answer-choice wording (Consistently/Usually/.../Not in Place) and
+  // the rating-tier labels shown in the report (Strength/.../Priority Gap).
+  // Keyed by point value (pts_5..pts_1) rather than list position, so there
+  // is nothing to accidentally drag-reorder in the editor and silently
+  // scramble the scoring — only the label text itself is editable.
+  const scale = c.scale || {};
+  SCALE.forEach(s => { const v = scale['pts_' + s.pts]; if (v) s.label = v; });
+  const tiers = c.tiers || {};
+  [5,4,3,2,1].forEach(pts => { const v = tiers['pts_' + pts]; if (v) TIER[pts].label = v; });
+
   const global = c.global || {};
   setText('scBrandName', global.brand_name);
   setText('scBrandTagline', global.brand_tagline);
@@ -468,6 +478,7 @@ async function startQuiz(e){
     date: new Date().toLocaleDateString('en-CA'), // YYYY-MM-DD in local time
   };
   await questionsReady; // make sure questions.json has loaded
+  await siteContentReady; // make sure scale/tier labels have loaded too
   answers = new Array(QUESTIONS.length).fill(null);
   showScreen('screen-quiz');
   renderQ();
