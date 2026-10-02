@@ -140,8 +140,7 @@
           <div><label for="r_industry">Industry</label><input id="r_industry" required></div>
         </div>
         <div class="field-row">
-          <div><label for="r_employees">Approximate Number of Employees</label><input id="r_employees" type="number" min="1" required></div>
-          <div><label for="r_date">Date</label><input id="r_date" type="date" required></div>
+          <div class="full"><label for="r_employees">Approximate Number of Employees</label><input id="r_employees" type="number" min="1" required></div>
         </div>
         <button class="btn btn-primary" type="submit" style="margin-top:10px;">Start the QuickCheck</button>
       </form>
@@ -269,7 +268,25 @@
             <div><label for="c_phone">Phone (optional)</label><input id="c_phone" type="tel"></div>
           </div>
           <div class="field-row">
-            <div><label for="c_state">State / territory</label><input id="c_state" required></div>
+            <div><label for="c_state">State / territory</label>
+              <select id="c_state" required>
+                <option value="">Select…</option>
+                <option value="AL">AL</option><option value="AK">AK</option><option value="AZ">AZ</option><option value="AR">AR</option>
+                <option value="CA">CA</option><option value="CO">CO</option><option value="CT">CT</option><option value="DE">DE</option>
+                <option value="DC">DC</option><option value="FL">FL</option><option value="GA">GA</option><option value="HI">HI</option>
+                <option value="ID">ID</option><option value="IL">IL</option><option value="IN">IN</option><option value="IA">IA</option>
+                <option value="KS">KS</option><option value="KY">KY</option><option value="LA">LA</option><option value="ME">ME</option>
+                <option value="MD">MD</option><option value="MA">MA</option><option value="MI">MI</option><option value="MN">MN</option>
+                <option value="MS">MS</option><option value="MO">MO</option><option value="MT">MT</option><option value="NE">NE</option>
+                <option value="NV">NV</option><option value="NH">NH</option><option value="NJ">NJ</option><option value="NM">NM</option>
+                <option value="NY">NY</option><option value="NC">NC</option><option value="ND">ND</option><option value="OH">OH</option>
+                <option value="OK">OK</option><option value="OR">OR</option><option value="PA">PA</option><option value="RI">RI</option>
+                <option value="SC">SC</option><option value="SD">SD</option><option value="TN">TN</option><option value="TX">TX</option>
+                <option value="UT">UT</option><option value="VT">VT</option><option value="VA">VA</option><option value="WA">WA</option>
+                <option value="WV">WV</option><option value="WI">WI</option><option value="WY">WY</option>
+                <option value="AS">AS</option><option value="GU">GU</option><option value="MP">MP</option><option value="PR">PR</option><option value="VI">VI</option>
+              </select>
+            </div>
             <div><label for="c_renewal">Workers' comp renewal month</label><input id="c_renewal" placeholder="e.g. March" required></div>
           </div>
           <div class="field-row">
@@ -386,7 +403,7 @@ function startQuiz(e){
     role: document.getElementById('r_role').value,
     industry: document.getElementById('r_industry').value,
     employees: document.getElementById('r_employees').value,
-    date: document.getElementById('r_date').value,
+    date: new Date().toLocaleDateString('en-CA'), // YYYY-MM-DD in local time
   };
   showScreen('screen-quiz');
   renderQ();
