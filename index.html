@@ -357,7 +357,7 @@ const TIER = {
 let QUESTIONS = [];
 const questionsReady = fetch('questions.json')
   .then(r => r.json())
-  .then(data => { QUESTIONS = data; })
+  .then(data => { QUESTIONS = data.questions; })
   .catch(err => { console.error('Failed to load questions.json:', err); });
 
 /* Where lead submissions get sent — paste the "Catch Hook" webhook URL
