@@ -63,8 +63,6 @@ collections:
             name: "global"
             widget: "object"
             fields:
-              - { label: "Company name (header)", name: "brand_name", widget: "string" }
-              - { label: "Tagline under company name (header)", name: "brand_tagline", widget: "string" }
               - { label: "Small subtitle next to the logo (header)", name: "header_subtitle", widget: "string" }
               - { label: "Footer copyright line", name: "footer_copyright", widget: "string" }
               - { label: "Footer trademark line", name: "footer_trademark", widget: "string" }
