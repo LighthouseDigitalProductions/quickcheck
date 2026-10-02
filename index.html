@@ -505,13 +505,21 @@ function sendLead(){
     source: 'Cost Control Behaviors QuickCheck'
   };
 
+  // Content-Type is deliberately 'text/plain', not 'application/json'.
+  // 'application/json' makes the browser send a CORS preflight (OPTIONS)
+  // request first; if that preflight isn't answered the way the browser
+  // expects, the real POST never goes out. 'text/plain' is a CORS
+  // "simple request" so no preflight happens — Zapier's Catch Hook still
+  // parses the body as JSON regardless of the declared content type.
   return fetch(LEAD_ENDPOINT, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'Content-Type': 'text/plain' },
     body: JSON.stringify(payload),
     keepalive: true
-  }).catch(() => {
-    // Non-fatal — booking still proceeds even if the lead post fails.
+  }).catch((err) => {
+    // Non-fatal — booking still proceeds even if the lead post fails —
+    // but log it so it shows up in the browser console for debugging.
+    console.error('QuickCheck lead POST failed:', err);
   });
 }
 
