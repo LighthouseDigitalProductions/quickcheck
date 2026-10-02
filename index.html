@@ -383,6 +383,11 @@ const QUESTIONS = [
     improve: "Assign clear ownership for workers' compensation performance and put a recurring leadership review on the calendar so these behaviors are actively managed, not just assumed." },
 ];
 
+/* Where lead submissions get sent — paste the "Catch Hook" webhook URL
+   from the Zapier Zap (see setup notes) here once it's built. Leaving
+   this unset simply skips sending; the booking link still works. */
+const LEAD_ENDPOINT = "REPLACE_WITH_ZAPIER_WEBHOOK_URL";
+
 /* ===================== app logic — no edits needed below ===================== */
 
 let current = 0;
@@ -457,8 +462,44 @@ function submitContactAndBook(e){
   respondent.renewal_month = document.getElementById('c_renewal').value;
   respondent.interest = document.getElementById('c_interest').value;
 
+  sendLead();
+
   location.href = 'https://calendly.com/sacredplans/30min';
   return false;
+}
+
+function sendLead(){
+  if (!LEAD_ENDPOINT || LEAD_ENDPOINT.indexOf('REPLACE_WITH') === 0) return;
+
+  const ratings = QUESTIONS.map((q,i) => ({
+    behavior: q.title.replace(/^\d+\.\s*/,''),
+    rating: SCALE[answers[i]].pts
+  }));
+  const avg = (ratings.reduce((s,r)=>s+r.rating,0) / ratings.length).toFixed(1);
+  const reportBody = document.querySelector('#screen-report .report-body');
+
+  const payload = {
+    ...respondent,
+    average_score: avg,
+    ratings,
+    report_html: reportBody ? reportBody.innerHTML : '',
+    source: 'Cost Control Behaviors QuickCheck'
+  };
+
+  try {
+    const blob = new Blob([JSON.stringify(payload)], { type: 'application/json' });
+    const sent = navigator.sendBeacon && navigator.sendBeacon(LEAD_ENDPOINT, blob);
+    if (!sent){
+      fetch(LEAD_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+        keepalive: true
+      }).catch(() => {});
+    }
+  } catch (err) {
+    // Non-fatal — booking still proceeds even if the lead post fails.
+  }
 }
 
 function renderReport(){
