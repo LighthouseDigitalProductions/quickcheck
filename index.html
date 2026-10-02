@@ -461,7 +461,7 @@ function showReport(){
   showScreen('screen-report');
 }
 
-function submitContactAndBook(e){
+async function submitContactAndBook(e){
   e.preventDefault();
   respondent.email = document.getElementById('c_email').value;
   respondent.phone = document.getElementById('c_phone').value;
@@ -469,14 +469,26 @@ function submitContactAndBook(e){
   respondent.renewal_month = document.getElementById('c_renewal').value;
   respondent.interest = document.getElementById('c_interest').value;
 
-  sendLead();
+  // Wait for the lead POST to actually finish (bounded by a short timeout)
+  // before navigating away. Navigating immediately after an un-awaited
+  // fetch() relies on the browser's keepalive mode, which silently drops
+  // request bodies over ~64KB (our payload includes the full report HTML
+  // and can exceed that) — that was causing leads to arrive at Zapier
+  // with an empty body.
+  await sendLeadAndWait();
 
   location.href = 'https://calendly.com/sacredplans/30min';
   return false;
 }
 
+function sendLeadAndWait(){
+  const leadPromise = sendLead();
+  const timeout = new Promise(resolve => setTimeout(resolve, 2500));
+  return Promise.race([leadPromise, timeout]);
+}
+
 function sendLead(){
-  if (!LEAD_ENDPOINT || LEAD_ENDPOINT.indexOf('REPLACE_WITH') === 0) return;
+  if (!LEAD_ENDPOINT || LEAD_ENDPOINT.indexOf('REPLACE_WITH') === 0) return Promise.resolve();
 
   const ratings = QUESTIONS.map((q,i) => ({
     behavior: q.title.replace(/^\d+\.\s*/,''),
@@ -493,16 +505,14 @@ function sendLead(){
     source: 'Cost Control Behaviors QuickCheck'
   };
 
-  try {
-    fetch(LEAD_ENDPOINT, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-      keepalive: true
-    }).catch(() => {});
-  } catch (err) {
+  return fetch(LEAD_ENDPOINT, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+    keepalive: true
+  }).catch(() => {
     // Non-fatal — booking still proceeds even if the lead post fails.
-  }
+  });
 }
 
 function renderReport(){
