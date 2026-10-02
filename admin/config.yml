@@ -9,6 +9,9 @@ backend:
 # publishing straight to the live site.
 publish_mode: editorial_workflow
 
+# Required by Decap CMS even though this editor doesn't use image uploads.
+media_folder: "assets/uploads"
+
 collections:
   - name: "questions"
     label: "QuickCheck Questions"
