@@ -22,8 +22,7 @@
   .wrap{max-width:720px; margin:0 auto; padding:0 20px;}
   header.site{border-bottom:1px solid var(--line); background:var(--card);}
   header.site .wrap{display:flex; align-items:center; justify-content:space-between; padding:18px 20px;}
-  .brand{font-family:var(--serif); font-weight:700; font-size:1.05rem; color:var(--green-deep);}
-  .brand small{display:block; font-family:var(--sans); font-weight:500; font-size:.68rem; color:var(--ink-soft); letter-spacing:.02em; margin-top:1px;}
+  .header-logo{display:block; height:40px; width:auto;}
   main{padding:44px 0 80px;}
   h1.page-title{font-family:var(--serif); font-size:1.9rem; line-height:1.2; margin:0 0 6px; color:var(--ink);}
   h2.page-sub{font-family:var(--serif); font-size:1.15rem; font-weight:600; color:var(--green-deep); margin:0 0 22px;}
@@ -113,7 +112,7 @@
 
 <header class="site">
   <div class="wrap">
-    <div class="brand"><span id="scBrandName">MTD Strategic</span><small id="scBrandTagline">Insurance Solutions</small></div>
+    <img src="assets/mtd-logo.png" alt="MTD Strategic Insurance Solutions" class="header-logo">
     <div style="font-size:.8rem; color:var(--ink-soft);" id="scHeaderSubtitle">Cost Control Behaviors™ QuickCheck</div>
   </div>
 </header>
@@ -377,8 +376,6 @@ function populateSiteContent(c){
   [5,4,3,2,1].forEach(pts => { const v = tiers['pts_' + pts]; if (v) TIER[pts].label = v; });
 
   const global = c.global || {};
-  setText('scBrandName', global.brand_name);
-  setText('scBrandTagline', global.brand_tagline);
   setText('scHeaderSubtitle', global.header_subtitle);
   setText('scFooterCopyright', global.footer_copyright);
   setText('scFooterTrademark', global.footer_trademark);
