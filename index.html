@@ -497,10 +497,18 @@ function sendLead(){
   const avg = (ratings.reduce((s,r)=>s+r.rating,0) / ratings.length).toFixed(1);
   const reportBody = document.querySelector('#screen-report .report-body');
 
+  // Flat rating_1..rating_10 fields alongside the ratings array — Zapier's
+  // Catch Hook can flatten a nested array inconsistently depending on the
+  // sample it captured, so these give the Google Sheets step 10 unambiguous
+  // top-level fields to map one-per-column instead.
+  const flatRatings = {};
+  ratings.forEach((r, i) => { flatRatings['rating_' + (i + 1)] = r.rating; });
+
   const payload = {
     ...respondent,
     average_score: avg,
     ratings,
+    ...flatRatings,
     report_html: reportBody ? reportBody.innerHTML : '',
     source: 'Cost Control Behaviors QuickCheck'
   };
