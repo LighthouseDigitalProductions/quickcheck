@@ -1,12 +1,9 @@
 backend:
-  name: github
-  repo: LighthouseDigitalProductions/quickcheck
+  # Netlify Identity + Git Gateway: Martin logs in with a simple email/password
+  # (set up via a free Netlify account connected to this same repo). No GitHub
+  # account needed for him, and no separate OAuth proxy server to run.
+  name: git-gateway
   branch: main
-  # TODO: set this once the OAuth proxy is deployed (see setup notes).
-  # It should be the base URL of the small auth-proxy app, e.g.
-  # https://quickcheck-cms-auth.netlify.app
-  base_url: https://REPLACE_WITH_OAUTH_PROXY_URL
-  auth_endpoint: auth
 
 # Changes Martin saves become a pull request for review, instead of
 # publishing straight to the live site.
