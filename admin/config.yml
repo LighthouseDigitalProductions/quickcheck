@@ -1,0 +1,32 @@
+backend:
+  name: github
+  repo: LighthouseDigitalProductions/quickcheck
+  branch: main
+  # TODO: set this once the OAuth proxy is deployed (see setup notes).
+  # It should be the base URL of the small auth-proxy app, e.g.
+  # https://quickcheck-cms-auth.netlify.app
+  base_url: https://REPLACE_WITH_OAUTH_PROXY_URL
+  auth_endpoint: auth
+
+# Changes Martin saves become a pull request for review, instead of
+# publishing straight to the live site.
+publish_mode: editorial_workflow
+
+collections:
+  - name: "questions"
+    label: "QuickCheck Questions"
+    files:
+      - file: "questions.json"
+        label: "10 Behavior Questions"
+        name: "questions"
+        description: "Edit the text for each of the 10 QuickCheck questions. The order here is the order they appear in the quiz."
+        fields:
+          - label: "Questions"
+            name: "questions"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Title (keep the leading number, e.g. '1. Timely Injury Reporting')", name: "title", widget: "string" }
+              - { label: "Question text (shown during the quiz)", name: "text", widget: "text" }
+              - { label: "How this gets validated (shown in the final report)", name: "validation", widget: "text" }
+              - { label: "How to improve (shown in the final report)", name: "improve", widget: "text" }
