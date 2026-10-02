@@ -1,4 +1,14 @@
 {
+  "global": {
+    "brand_name": "MTD Strategic",
+    "brand_tagline": "Insurance Solutions",
+    "header_subtitle": "Cost Control Behaviors™ QuickCheck",
+    "footer_copyright": "© 2026 MTD Strategic Insurance Solutions, LLC",
+    "footer_trademark": "Cost Control Behaviors™ is a trademark of MTD Strategic Insurance Solutions, LLC"
+  },
+  "quiz": {
+    "back_button": "Back"
+  },
   "intro": {
     "title": "Discover the Operational Behaviors Influencing Your Workers' Compensation Results",
     "lede_1": "Workers' compensation outcomes are shaped long before a claim appears on a loss run or a premium is calculated. Everyday management practices — how quickly injuries are reported, how supervisors respond, how claims are monitored, how employees return to work — can significantly influence claim outcomes and long-term insurance costs.",
@@ -42,8 +52,27 @@
   "report": {
     "kicker": "COST CONTROL BEHAVIORS™",
     "title": "Snapshot Report",
+    "print_button": "Print / Save as PDF",
+    "meta_completed_by": "Completed by",
+    "meta_assessment_date": "Assessment date",
     "report_basis": "Self-assessed Cost Control Behaviors™ QuickCheck baseline",
+    "heading_exec_summary": "Executive Summary",
+    "heading_score_profile": "1. Score Profile",
+    "score_table_col1": "Cost Control Behavior",
+    "score_table_col2": "Rating",
+    "heading_patterns": "2. Notable Patterns",
+    "heading_interpretation": "3. Interpretation of Results",
+    "heading_validate": "4. Validate Ratings Through Operational Metrics",
     "validate_intro": "Because this Snapshot reflects self-reported perception rather than measured outcomes, each behavior should be checked against a small set of real operating indicators.",
+    "validation_table_col1": "Cost Control Behavior",
+    "validation_table_col2": "Example Validation Measure",
+    "heading_followup": "5. Priority Follow-Up",
+    "heading_closing": "6. Closing Assessment",
+    "contact_email_label": "Email",
+    "contact_phone_label": "Phone (optional)",
+    "contact_state_label": "State / territory",
+    "contact_renewal_label": "Workers' comp renewal month",
+    "contact_interest_label": "I'm interested in",
     "booking_heading": "Want to walk through these results together?",
     "booking_sub": "Share a few details and book a short call to review your Snapshot and talk through next steps.",
     "booking_button": "Book a Strategy Conversation"

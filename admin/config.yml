@@ -39,6 +39,15 @@ collections:
         name: "site_content"
         description: "Edit the wording on the intro page, the thank-you page, and the labels on the Snapshot Report. Note: the Snapshot Report's Executive Summary, Patterns, Interpretation, Follow-Up, and Closing sections are NOT here — those are written automatically from each person's quiz answers and can't be edited directly."
         fields:
+          - label: "Header & Footer (shown on every page)"
+            name: "global"
+            widget: "object"
+            fields:
+              - { label: "Company name (header)", name: "brand_name", widget: "string" }
+              - { label: "Tagline under company name (header)", name: "brand_tagline", widget: "string" }
+              - { label: "Small subtitle next to the logo (header)", name: "header_subtitle", widget: "string" }
+              - { label: "Footer copyright line", name: "footer_copyright", widget: "string" }
+              - { label: "Footer trademark line", name: "footer_trademark", widget: "string" }
           - label: "Intro Page"
             name: "intro"
             widget: "object"
@@ -56,6 +65,11 @@ collections:
               - { label: "\"Role or Department\" field label", name: "label_role", widget: "string" }
               - { label: "\"Industry\" field label", name: "label_industry", widget: "string" }
               - { label: "\"Approximate Number of Employees\" field label", name: "label_employees", widget: "string" }
+          - label: "Quiz Screen"
+            name: "quiz"
+            widget: "object"
+            fields:
+              - { label: "\"Back\" button text", name: "back_button", widget: "string" }
           - label: "Thank You Page"
             name: "thankyou"
             widget: "object"
@@ -87,8 +101,27 @@ collections:
             fields:
               - { label: "Header kicker (small text above the title)", name: "kicker", widget: "string" }
               - { label: "Header title", name: "title", widget: "string" }
+              - { label: "\"Print / Save as PDF\" button text", name: "print_button", widget: "string" }
+              - { label: "\"Completed by\" label", name: "meta_completed_by", widget: "string" }
+              - { label: "\"Assessment date\" label", name: "meta_assessment_date", widget: "string" }
               - { label: "\"Report basis\" line", name: "report_basis", widget: "string" }
+              - { label: "Section heading: Executive Summary", name: "heading_exec_summary", widget: "string" }
+              - { label: "Section heading: Score Profile", name: "heading_score_profile", widget: "string" }
+              - { label: "Score table column 1 header", name: "score_table_col1", widget: "string" }
+              - { label: "Score table column 2 header", name: "score_table_col2", widget: "string" }
+              - { label: "Section heading: Notable Patterns", name: "heading_patterns", widget: "string" }
+              - { label: "Section heading: Interpretation of Results", name: "heading_interpretation", widget: "string" }
+              - { label: "Section heading: Validate Ratings", name: "heading_validate", widget: "string" }
               - { label: "Section 4 intro line", name: "validate_intro", widget: "text" }
+              - { label: "Validation table column 1 header", name: "validation_table_col1", widget: "string" }
+              - { label: "Validation table column 2 header", name: "validation_table_col2", widget: "string" }
+              - { label: "Section heading: Priority Follow-Up", name: "heading_followup", widget: "string" }
+              - { label: "Section heading: Closing Assessment", name: "heading_closing", widget: "string" }
+              - { label: "Booking form: Email field label", name: "contact_email_label", widget: "string" }
+              - { label: "Booking form: Phone field label", name: "contact_phone_label", widget: "string" }
+              - { label: "Booking form: State field label", name: "contact_state_label", widget: "string" }
+              - { label: "Booking form: Renewal month field label", name: "contact_renewal_label", widget: "string" }
+              - { label: "Booking form: Interest field label", name: "contact_interest_label", widget: "string" }
               - { label: "Booking box heading", name: "booking_heading", widget: "string" }
               - { label: "Booking box subtext", name: "booking_sub", widget: "string" }
               - { label: "Booking button text", name: "booking_button", widget: "string" }
