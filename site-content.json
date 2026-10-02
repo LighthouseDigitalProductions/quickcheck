@@ -1,0 +1,45 @@
+{
+  "intro": {
+    "title": "Discover the Operational Behaviors Influencing Your Workers' Compensation Results",
+    "lede_1": "Workers' compensation outcomes are shaped long before a claim appears on a loss run or a premium is calculated. Everyday management practices — how quickly injuries are reported, how supervisors respond, how claims are monitored, how employees return to work — can significantly influence claim outcomes and long-term insurance costs.",
+    "lede_2": "The Cost Control Behaviors™ QuickCheck provides a high-level snapshot of the operational practices that may be affecting your organization's workers' compensation performance.",
+    "instructions": "Answer each statement based on how your organization operates in practice — not simply on what is written in a policy or procedure. Select the response that best reflects how consistently each behavior is carried out across the organization.",
+    "estimated_time": "Estimated completion time: 5–7 minutes",
+    "start_button": "Start the QuickCheck",
+    "disclaimer": "The Cost Control Behaviors™ QuickCheck is intended to provide a high-level operational assessment and should not be considered legal, safety, or insurance advice. It does not guarantee insurance savings, premium reductions, or underwriting results."
+  },
+  "thankyou": {
+    "title": "Thank You",
+    "subtitle": "Thank you for completing the Cost Control Behaviors™ Snapshot",
+    "lede": "Your responses provide an initial snapshot of the operational behaviors that influence your organization's workers' compensation performance.",
+    "receive_label": "What You'll Receive",
+    "receive_intro": "Your personalized Cost Control Behaviors™ Snapshot Report is ready now and includes:",
+    "receive_items": [
+      "Your organization's Cost Control Behaviors™ ratings",
+      "An Executive Summary of your results",
+      "Your organization's strongest operational behaviors",
+      "Key opportunities for improvement",
+      "Practical recommendations to help strengthen future workers' compensation outcomes"
+    ],
+    "categories_label": "Overall Rating Categories",
+    "categories_intro": "Each behavior in your Snapshot Report is placed into one of the following categories:",
+    "categories": [
+      { "title": "Strong Foundation", "description": "Well established and consistently practiced." },
+      { "title": "Developing", "description": "Good practices in place, with room to improve consistency." },
+      { "title": "Needs Attention", "description": "Could be strengthened to improve future outcomes." },
+      { "title": "Priority Improvement", "description": "Significant opportunity to reduce risk and cost." }
+    ],
+    "tagline": "Your premium is the scoreboard. Cost Control Behaviors™ are the game.",
+    "report_button": "Show my Snapshot Report",
+    "disclaimer": "The Cost Control Behaviors™ Snapshot is intended to provide a high-level operational assessment and should not be considered legal, safety, or insurance advice."
+  },
+  "report": {
+    "kicker": "COST CONTROL BEHAVIORS™",
+    "title": "Snapshot Report",
+    "report_basis": "Self-assessed Cost Control Behaviors™ QuickCheck baseline",
+    "validate_intro": "Because this Snapshot reflects self-reported perception rather than measured outcomes, each behavior should be checked against a small set of real operating indicators.",
+    "booking_heading": "Want to walk through these results together?",
+    "booking_sub": "Share a few details and book a short call to review your Snapshot and talk through next steps.",
+    "booking_button": "Book a Strategy Conversation"
+  }
+}
