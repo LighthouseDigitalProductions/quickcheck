@@ -50,6 +50,12 @@ collections:
               - { label: "Estimated time line", name: "estimated_time", widget: "string" }
               - { label: "\"Start\" button text", name: "start_button", widget: "string" }
               - { label: "Disclaimer", name: "disclaimer", widget: "text" }
+              - { label: "\"Respondent Information\" section label", name: "respondent_label", widget: "string" }
+              - { label: "\"Organization\" field label", name: "label_org", widget: "string" }
+              - { label: "\"Respondent Name\" field label", name: "label_name", widget: "string" }
+              - { label: "\"Role or Department\" field label", name: "label_role", widget: "string" }
+              - { label: "\"Industry\" field label", name: "label_industry", widget: "string" }
+              - { label: "\"Approximate Number of Employees\" field label", name: "label_employees", widget: "string" }
           - label: "Thank You Page"
             name: "thankyou"
             widget: "object"
