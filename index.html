@@ -308,7 +308,7 @@ function populateSiteContent(c){
   setText('scSnapBookingBtn', snap.booking_button);
   // Hide the scheduling box until a real scheduling link has been set.
   const box = document.getElementById('snapBookingBox');
-  if (box) box.style.display = BOOKING_URL ? '' : 'none';
+  if (box) box.style.display = (snap.booking_url || '').trim() ? '' : 'none';
 
   // Results-ready step shown right after question 10 (collects email + phone).
   const gate = c.gate || {};
@@ -330,10 +330,15 @@ function populateSiteContent(c){
    this unset simply skips sending; the booking link still works. */
 const LEAD_ENDPOINT = "https://hook.us2.make.com/kyy63j516sqo8mn1oo3mcguquudgfn8m";
 
-/* Where the "Schedule a Strategy Conversation" button on the Snapshot goes.
-   Temporarily Calendly, for testing; swap in MTD's own scheduling link once
-   chosen. If this is blank the scheduling box on the Snapshot is hidden. */
-const BOOKING_URL = "https://calendly.com/sacredplans/30min";
+/* The scheduling link for the "Schedule a Strategy Conversation" button is
+   edited in /admin (Site Text > Preliminary Snapshot > Scheduling link), not
+   here. If it is blank the scheduling box on the Snapshot is hidden. */
+
+/* When true, clicking the scheduling button first sends a small
+   {event:'booking_click'} message to LEAD_ENDPOINT so the click can be logged.
+   Leave false until the Make scenario has a route that handles that event,
+   otherwise Make would treat the click like a new lead. */
+const TRACK_BOOKING_CLICKS = false;
 
 /* ===================== app logic — no edits needed below ===================== */
 
@@ -441,8 +446,24 @@ async function submitGate(e){
   return false;
 }
 
-function bookConversation(){
-  if (BOOKING_URL) location.href = BOOKING_URL;
+function bookingUrl(){ return ((SITE_CONTENT.snapshot || {}).booking_url || '').trim(); }
+
+async function bookConversation(){
+  const url = bookingUrl();
+  if (!url) return;
+  if (TRACK_BOOKING_CLICKS && LEAD_ENDPOINT){
+    // Short, bounded wait so the click is recorded before leaving the page.
+    await Promise.race([
+      postForm(LEAD_ENDPOINT, {
+        event: 'booking_click',
+        completion_id: completionId,
+        email: respondent.email, name: respondent.name, org: respondent.org,
+        phone: respondent.phone, date: new Date().toISOString()
+      }, 'booking click'),
+      new Promise(r => setTimeout(r, 1500))
+    ]);
+  }
+  location.href = url;
 }
 
 function sendLeadAndWait(){
