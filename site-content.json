@@ -56,15 +56,23 @@
     "equal_next": "The next step is to check how consistently these practices work in daily operations.",
     "closing": "This Snapshot reflects your answers. A conversation can test how these practices work day to day, review relevant claims and operating information where available, and identify a practical starting point.",
     "disclaimer": "The Cost Control Behaviors™ Snapshot is a high-level educational operational assessment based on your own answers. It is not legal, safety, or insurance advice, and it does not guarantee insurance savings, premium reductions, or underwriting results.",
-    "booking_heading": "Want to walk through these results together?",
-    "booking_sub": "Share a few details and we'll email you a copy of your answers. Then book a short Strategy Conversation to talk through next steps.",
-    "contact_email_label": "Email",
-    "contact_phone_label": "Phone",
-    "contact_state_label": "State / territory",
-    "contact_renewal_label": "Workers' comp renewal month",
-    "contact_interest_label": "I'm interested in",
+    "booking_heading": "Want to talk through these results?",
+    "booking_sub": "Schedule a short conversation with the MTD Strategic team.",
     "booking_button": "Schedule a Strategy Conversation",
     "email_ratings_heading": "Your self-reported ratings",
     "email_ratings_note": "These are your own self-ratings, not confirmed performance grades."
+  },
+  "gate": {
+    "kicker": "All ten questions answered",
+    "title": "Your Snapshot is ready",
+    "sub": "Where should we send your results? We'll email you a copy to keep and share with your team, and then show it on the next screen.",
+    "email_label": "Email",
+    "phone_label": "Phone",
+    "optional_note": "Optional — helps us tailor a conversation if you want one:",
+    "state_label": "State / territory",
+    "renewal_label": "Workers' comp renewal month",
+    "interest_label": "I'm interested in",
+    "button": "Show my Snapshot",
+    "privacy": "We use your details only to send your results and follow up about them."
   }
 }
