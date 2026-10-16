@@ -326,17 +326,9 @@ function populateSiteContent(c){
 }
 
 /* Where lead submissions get sent — paste the "Catch Hook" webhook URL
-   from the Zapier Zap (see setup notes) here once it's built. Leaving
+   from the Make scenario here once it's built. Leaving
    this unset simply skips sending; the booking link still works. */
-const LEAD_ENDPOINT = "https://hooks.zapier.com/hooks/catch/28995892/4mkzfkj/";
-
-/* Where every COMPLETED QuickCheck gets logged (whether or not the person
-   goes on to book). This must be a DIFFERENT webhook from LEAD_ENDPOINT:
-   LEAD_ENDPOINT's Zap sends the text and both emails, which should only
-   happen for real leads. Point this at a second "Catch Hook" (or any URL that
-   accepts a JSON POST) that just adds a row to a Completions sheet. Leaving it
-   empty skips completion logging. */
-const COMPLETION_ENDPOINT = "";
+const LEAD_ENDPOINT = "https://hook.us2.make.com/kyy63j516sqo8mn1oo3mcguquudgfn8m";
 
 /* Where the "Schedule a Strategy Conversation" button on the Snapshot goes.
    Temporarily Calendly, for testing; swap in MTD's own scheduling link once
@@ -403,7 +395,6 @@ function selectChoice(i){
     document.getElementById('progressFill').style.width = '100%';
     completionId = newId();
     snapshotResult = computeSnapshot(currentPts());
-    logCompletion(); // every finished quiz is logged, even if they stop at the next step
     showScreen('screen-gate');
   }
 }
@@ -603,7 +594,7 @@ function newId(){
   return 'qc-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 10);
 }
 
-// Fields shared by the completion log and the lead payload.
+// Result fields included in the lead payload.
 function resultFields(){
   const r = snapshotResult;
   const pts = currentPts();
@@ -621,9 +612,9 @@ function resultFields(){
 }
 
 // Content-Type is deliberately 'text/plain', not 'application/json': JSON
-// would trigger a CORS preflight (OPTIONS) that Zapier does not answer, so
+// would trigger a CORS preflight (OPTIONS) that the webhook may not answer, so
 // the real POST would never go out. text/plain is a CORS "simple request";
-// Zapier's Catch Hook still parses the body as JSON.
+// the webhook still parses the body as JSON.
 function postJson(url, payload, label){
   return fetch(url, {
     method: 'POST',
@@ -631,13 +622,6 @@ function postJson(url, payload, label){
     body: JSON.stringify(payload),
     keepalive: true
   }).catch(err => { console.error('QuickCheck ' + label + ' POST failed:', err); });
-}
-
-// Logs every finished QuickCheck the moment the Snapshot appears, whether or
-// not the person goes on to book. No contact details exist yet at this point.
-function logCompletion(){
-  if (!COMPLETION_ENDPOINT) return Promise.resolve();
-  return postJson(COMPLETION_ENDPOINT, { event:'completed', ...respondent, ...resultFields() }, 'completion');
 }
 
 function sendLead(){
