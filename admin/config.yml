@@ -28,8 +28,10 @@ collections:
             fields:
               - { label: "Title (keep the leading number, e.g. '1. Timely Injury Reporting')", name: "title", widget: "string" }
               - { label: "Question text (shown during the quiz)", name: "text", widget: "text" }
-              - { label: "How this gets validated (shown in the final report)", name: "validation", widget: "text" }
-              - { label: "How to improve (shown in the final report)", name: "improve", widget: "text" }
+              - { label: "Why this may matter (shown in the Snapshot when this is the area to examine)", name: "implication", widget: "text" }
+              - { label: "Question worth exploring (shown in the Snapshot when this is the area to examine)", name: "prompt", widget: "text" }
+              - { label: "Validation measure (not currently shown online)", name: "validation", widget: "text" }
+              - { label: "How to improve (not currently shown online)", name: "improve", widget: "text" }
 
   - name: "site_content"
     label: "Site Text"
@@ -37,22 +39,12 @@ collections:
       - file: "site-content.json"
         label: "Page Wording"
         name: "site_content"
-        description: "Edit the wording on the intro page, the thank-you page, and the labels on the Snapshot Report. Note: the Snapshot Report's Executive Summary, Patterns, Interpretation, Follow-Up, and Closing sections are NOT here — those are written automatically from each person's quiz answers and can't be edited directly."
+        description: "Edit the wording on the intro page, the preliminary Snapshot, and the scoring bands. Which pattern, strength and area a person sees is chosen automatically from their answers by fixed rules; here you edit the words shown and the cut-off numbers. Each behavior's 'why this may matter' sentence and follow-up question are edited under QuickCheck Questions."
         fields:
           - label: "Quiz Answer Scale (used for every question)"
             name: "scale"
             widget: "object"
             hint: "The 5 choices shown for every question, from the most-consistently-practiced to the least. Don't reorder these fields — each one is tied to its point value."
-            fields:
-              - { label: "Highest (5 points)", name: "pts_5", widget: "string" }
-              - { label: "4 points", name: "pts_4", widget: "string" }
-              - { label: "3 points", name: "pts_3", widget: "string" }
-              - { label: "2 points", name: "pts_2", widget: "string" }
-              - { label: "Lowest (1 point)", name: "pts_1", widget: "string" }
-          - label: "Report Rating-Tier Labels"
-            name: "tiers"
-            widget: "object"
-            hint: "The short label shown next to each score (1-5) in the report's score table. Don't reorder these fields — each one is tied to its point value."
             fields:
               - { label: "Highest (5 points)", name: "pts_5", widget: "string" }
               - { label: "4 points", name: "pts_4", widget: "string" }
@@ -88,58 +80,46 @@ collections:
             widget: "object"
             fields:
               - { label: "\"Back\" button text", name: "back_button", widget: "string" }
-          - label: "Thank You Page"
-            name: "thankyou"
+          - label: "Scoring Bands (cut-off numbers)"
+            name: "scoring"
+            widget: "object"
+            hint: "Average of the ten 1–5 ratings decides the overall pattern. Numbers must be between 1 and 5, and Strong ≥ Developing ≥ Several; otherwise the built-in defaults (4.5 / 3.5 / 2.5, minimums 3 / 2) are used. Changing these is a rule change — check with Lighthouse first."
+            fields:
+              - { label: "Strong: minimum average", name: "strong_avg", widget: "number", value_type: "float", min: 1, max: 5, step: 0.1 }
+              - { label: "Strong: no single rating below", name: "strong_min", widget: "number", value_type: "float", min: 1, max: 5, step: 0.1 }
+              - { label: "Developing: minimum average", name: "developing_avg", widget: "number", value_type: "float", min: 1, max: 5, step: 0.1 }
+              - { label: "Developing: no single rating below", name: "developing_min", widget: "number", value_type: "float", min: 1, max: 5, step: 0.1 }
+              - { label: "Several practices to strengthen: minimum average", name: "several_avg", widget: "number", value_type: "float", min: 1, max: 5, step: 0.1 }
+          - label: "Preliminary Snapshot"
+            name: "snapshot"
             widget: "object"
             fields:
               - { label: "Page title", name: "title", widget: "string" }
-              - { label: "Subtitle", name: "subtitle", widget: "string" }
-              - { label: "Intro paragraph", name: "lede", widget: "text" }
-              - { label: "\"What You'll Receive\" section label", name: "receive_label", widget: "string" }
-              - { label: "\"What You'll Receive\" intro line", name: "receive_intro", widget: "string" }
-              - label: "\"What You'll Receive\" checklist items"
-                name: "receive_items"
-                widget: "list"
-                field: { label: "Item", name: "item", widget: "string" }
-              - { label: "\"Rating Categories\" section label", name: "categories_label", widget: "string" }
-              - { label: "\"Rating Categories\" intro line", name: "categories_intro", widget: "string" }
-              - label: "Rating category cards"
-                name: "categories"
-                widget: "list"
-                summary: "{{fields.title}}"
-                fields:
-                  - { label: "Category name", name: "title", widget: "string" }
-                  - { label: "Description", name: "description", widget: "string" }
-              - { label: "Tagline", name: "tagline", widget: "string" }
-              - { label: "\"Show my Snapshot Report\" button text", name: "report_button", widget: "string" }
+              - { label: "Intro to the overall pattern (before the pattern name)", name: "pattern_intro", widget: "string" }
+              - { label: "Pattern name: Strong", name: "pattern_strong", widget: "string" }
+              - { label: "Pattern name: Developing", name: "pattern_developing", widget: "string" }
+              - { label: "Pattern name: Several practices", name: "pattern_several", widget: "string" }
+              - { label: "Pattern name: Foundational", name: "pattern_foundational", widget: "string" }
+              - { label: "Label: reported strength", name: "strength_label", widget: "string" }
+              - { label: "Label: area to examine", name: "area_label", widget: "string" }
+              - { label: "Label: area to examine when all ten are rated 4 or 5", name: "area_label_validate", widget: "string" }
+              - { label: "Line format for a selected behavior (keep {behavior} and {answer})", name: "selected_line", widget: "string" }
+              - { label: "Label: why this may matter", name: "why_label", widget: "string" }
+              - { label: "Why-it-matters text when all ten are rated 4 or 5", name: "why_all_high", widget: "text" }
+              - { label: "Label: question worth exploring", name: "question_label", widget: "string" }
+              - { label: "Note when no practice is rated 4 or higher", name: "no_strength_note", widget: "text" }
+              - { label: "Note when all ten answers are the same", name: "equal_note", widget: "text" }
+              - { label: "Label: practice used as an example (all answers the same)", name: "equal_example_label", widget: "string" }
+              - { label: "Next-step line when all answers are the same", name: "equal_next", widget: "text" }
+              - { label: "Closing paragraph", name: "closing", widget: "text" }
               - { label: "Disclaimer", name: "disclaimer", widget: "text" }
-          - label: "Snapshot Report — Static Labels Only"
-            name: "report"
-            widget: "object"
-            fields:
-              - { label: "Header kicker (small text above the title)", name: "kicker", widget: "string" }
-              - { label: "Header title", name: "title", widget: "string" }
-              - { label: "\"Print / Save as PDF\" button text", name: "print_button", widget: "string" }
-              - { label: "\"Completed by\" label", name: "meta_completed_by", widget: "string" }
-              - { label: "\"Assessment date\" label", name: "meta_assessment_date", widget: "string" }
-              - { label: "\"Report basis\" line", name: "report_basis", widget: "string" }
-              - { label: "Section heading: Executive Summary", name: "heading_exec_summary", widget: "string" }
-              - { label: "Section heading: Score Profile", name: "heading_score_profile", widget: "string" }
-              - { label: "Score table column 1 header", name: "score_table_col1", widget: "string" }
-              - { label: "Score table column 2 header", name: "score_table_col2", widget: "string" }
-              - { label: "Section heading: Notable Patterns", name: "heading_patterns", widget: "string" }
-              - { label: "Section heading: Interpretation of Results", name: "heading_interpretation", widget: "string" }
-              - { label: "Section heading: Validate Ratings", name: "heading_validate", widget: "string" }
-              - { label: "Section 4 intro line", name: "validate_intro", widget: "text" }
-              - { label: "Validation table column 1 header", name: "validation_table_col1", widget: "string" }
-              - { label: "Validation table column 2 header", name: "validation_table_col2", widget: "string" }
-              - { label: "Section heading: Priority Follow-Up", name: "heading_followup", widget: "string" }
-              - { label: "Section heading: Closing Assessment", name: "heading_closing", widget: "string" }
-              - { label: "Booking form: Email field label", name: "contact_email_label", widget: "string" }
-              - { label: "Booking form: Phone field label", name: "contact_phone_label", widget: "string" }
-              - { label: "Booking form: State field label", name: "contact_state_label", widget: "string" }
-              - { label: "Booking form: Renewal month field label", name: "contact_renewal_label", widget: "string" }
-              - { label: "Booking form: Interest field label", name: "contact_interest_label", widget: "string" }
               - { label: "Booking box heading", name: "booking_heading", widget: "string" }
-              - { label: "Booking box subtext", name: "booking_sub", widget: "string" }
+              - { label: "Booking box subtext", name: "booking_sub", widget: "text" }
+              - { label: "Form: Email label", name: "contact_email_label", widget: "string" }
+              - { label: "Form: Phone label", name: "contact_phone_label", widget: "string" }
+              - { label: "Form: State label", name: "contact_state_label", widget: "string" }
+              - { label: "Form: Renewal month label", name: "contact_renewal_label", widget: "string" }
+              - { label: "Form: Interest label", name: "contact_interest_label", widget: "string" }
               - { label: "Booking button text", name: "booking_button", widget: "string" }
+              - { label: "Email: heading above the ratings list", name: "email_ratings_heading", widget: "string" }
+              - { label: "Email: note under that heading", name: "email_ratings_note", widget: "text" }
