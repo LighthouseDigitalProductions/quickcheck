@@ -65,7 +65,7 @@
   "gate": {
     "kicker": "All ten questions answered",
     "title": "Your Snapshot is ready",
-    "sub": "Where should we send your results? We'll email you a copy to keep and share with your team, and then show it on the next screen.",
+    "sub": "Enter your email and phone to see your results on the next screen.",
     "email_label": "Email",
     "phone_label": "Phone",
     "optional_note": "Optional — helps us tailor a conversation if you want one:",
@@ -73,6 +73,6 @@
     "renewal_label": "Workers' comp renewal month",
     "interest_label": "I'm interested in",
     "button": "Show my Snapshot",
-    "privacy": "We use your details only to send your results and follow up about them."
+    "privacy": "We use your details only to follow up about your results."
   }
 }
