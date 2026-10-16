@@ -57,51 +57,22 @@
   .choice.selected{border-color:var(--green-deep); background:var(--green-pale); font-weight:600;}
   .quiz-nav{display:flex; justify-content:space-between; align-items:center;}
 
-  /* Thank you */
-  .checklist{list-style:none; margin:0 0 24px; padding:0;}
-  .checklist li{padding-left:26px; position:relative; margin-bottom:10px; color:var(--ink-soft); font-size:.95rem;}
-  .checklist li::before{content:"✓"; position:absolute; left:0; color:var(--green-deep); font-weight:700;}
-  .cat-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:18px 0 28px;}
-  @media (max-width:560px){.cat-grid{grid-template-columns:1fr;}}
-  .cat-card{border:1px solid var(--line); border-radius:var(--radius); padding:16px 18px; background:var(--paper);}
-  .cat-card h4{font-family:var(--serif); font-size:.95rem; margin:0 0 6px; color:var(--green-deep);}
-  .cat-card p{font-size:.85rem; color:var(--ink-soft); margin:0;}
-  .tagline{font-family:var(--serif); font-style:italic; color:var(--ink-soft); text-align:center; margin:30px 0 10px; font-size:1rem;}
-
-  /* Report */
-  .report-header{position:relative; background:var(--green-deep); color:#fff; padding:32px 36px; border-radius:var(--radius) var(--radius) 0 0;}
-  .report-header .kicker{font-size:.8rem; letter-spacing:.03em; color:#BFE1CC; margin-bottom:4px;}
-  .report-header h1{font-family:var(--serif); font-size:1.6rem; margin:0 0 4px; color:#fff;}
-  .report-header .org{font-size:1.05rem; color:#DCEFE1;}
-  .report-logo{position:absolute; top:20px; right:24px; max-width:130px; height:auto; background:#fff; padding:8px 10px; border-radius:4px;}
-  @media (max-width:560px){.report-logo{position:static; display:block; margin:0 0 14px;}}
-  .report-body{background:var(--card); border:1px solid var(--line); border-top:none; border-radius:0 0 var(--radius) var(--radius); padding:36px;}
-  .meta-table{width:100%; border-collapse:collapse; margin-bottom:28px; font-size:.85rem;}
-  .meta-table td{padding:10px 14px; border:1px solid var(--line); vertical-align:top;}
-  .meta-table td.label{background:var(--green-pale); font-weight:600; width:33%; color:var(--green-deep);}
-  .report-section{margin-bottom:32px;}
-  .report-section h2{font-family:var(--serif); font-size:1.2rem; color:var(--ink); margin:0 0 14px; padding-bottom:8px; border-bottom:2px solid var(--green-pale);}
-  .report-section h3{font-family:var(--serif); font-size:1rem; color:var(--green-deep); margin:18px 0 8px;}
-  .report-section p{font-size:.95rem; color:var(--ink-soft); margin:0 0 12px;}
-  table.score-table{width:100%; border-collapse:collapse; font-size:.88rem; margin-bottom:8px;}
-  table.score-table th{text-align:left; background:var(--green-pale); color:var(--green-deep); padding:10px 14px; border:1px solid var(--line); font-size:.78rem; text-transform:uppercase; letter-spacing:.02em;}
-  table.score-table td{padding:10px 14px; border:1px solid var(--line); color:var(--ink);}
-  .rating-pill{display:inline-flex; align-items:center; gap:6px; font-weight:600;}
-  .rating-num{display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; color:#fff; font-size:.8rem;}
-  .r5{background:var(--green-deep);} .r4{background:var(--green);} .r3{background:var(--gold);} .r2{background:#C77A3E;} .r1{background:var(--danger);}
-  .tier-label{font-size:.78rem; color:var(--ink-soft);}
-  ul.plain{margin:0; padding-left:20px;}
-  ul.plain li{color:var(--ink-soft); font-size:.92rem; margin-bottom:8px;}
-  .print-bar{display:flex; justify-content:flex-end; gap:10px; margin-bottom:14px;}
+  /* Preliminary Snapshot */
+  .snap-card{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:32px; margin-bottom:8px;}
+  .snap-pattern{background:var(--green-pale); border-radius:var(--radius); padding:18px 20px; margin-bottom:22px;}
+  .snap-pattern .snap-label{text-transform:none; font-size:.9rem; letter-spacing:0; color:var(--green-deep);}
+  .snap-pattern-name{font-family:var(--serif); font-size:1.45rem; font-weight:700; color:var(--green-deep); margin-top:4px; line-height:1.25;}
+  .snap-block{margin-bottom:20px;}
+  .snap-label{font-size:.78rem; font-weight:600; text-transform:uppercase; letter-spacing:.03em; color:var(--ink-soft); margin-bottom:4px;}
+  .snap-text{font-size:1rem; color:var(--ink);}
+  .snap-note{font-size:.95rem; color:var(--ink-soft); margin:0 0 20px;}
+  .snap-closing{font-size:.95rem; color:var(--ink-soft); margin:26px 0 0; padding-top:18px; border-top:1px dashed var(--line);}
+  .snap-cta{text-align:center; margin-top:28px; padding:28px; background:var(--green-pale); border-radius:var(--radius);}
+  .snap-cta-heading{font-family:var(--serif); font-size:1.1rem; color:var(--ink); margin:0 0 4px;}
+  .snap-cta-sub{font-size:.9rem; color:var(--ink-soft); margin:0 0 18px;}
 
   .screen{display:none;}
   .screen.active{display:block;}
-
-  @media print{
-    header.site, .print-bar, footer.site, .btn{display:none !important;}
-    body{background:#fff;}
-    .report-body, .report-header{border:none;}
-  }
 
   footer.site{border-top:1px solid var(--line); padding:26px 0; margin-top:40px;}
   footer.site .wrap{font-size:.78rem; color:var(--ink-soft); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
@@ -164,102 +135,25 @@
       </div>
     </section>
 
-    <!-- ============ SCREEN 3: THANK YOU (PDF thank-you page) ============ -->
-    <section id="screen-thankyou" class="screen">
-      <h1 class="page-title" id="scThanksTitle"></h1>
-      <h2 class="page-sub" id="scThanksSubtitle"></h2>
-      <p class="lede" id="scThanksLede"></p>
-
-      <div class="section-label" id="scThanksReceiveLabel"></div>
-      <p class="lede" id="scThanksReceiveIntro"></p>
-      <ul class="checklist" id="scThanksReceiveItems"></ul>
-
-      <div class="section-label" id="scThanksCatLabel"></div>
-      <p class="lede" id="scThanksCatIntro"></p>
-      <div class="cat-grid" id="scThanksCatGrid"></div>
-      <p class="tagline" id="scThanksTagline"></p>
-
-      <div class="card" style="margin-top:10px; text-align:center;">
-        <button class="btn btn-primary" onclick="showReport()" id="scThanksReportBtn"></button>
+    <!-- ============ SCREEN 3: PRELIMINARY SNAPSHOT ============ -->
+    <section id="screen-snapshot" class="screen">
+      <h1 class="page-title" id="scSnapTitle"></h1>
+      <div class="snap-card">
+        <div id="snapBody"></div>
+        <p class="snap-closing" id="scSnapClosing"></p>
       </div>
+      <p class="disclaimer" id="scSnapDisclaimer"></p>
 
-      <p class="disclaimer" id="scThanksDisclaimer"></p>
-    </section>
-
-    <!-- ============ SCREEN 4: SNAPSHOT REPORT ============ -->
-    <section id="screen-report" class="screen">
-      <div class="print-bar">
-        <button class="btn btn-ghost" onclick="window.print()" id="scReportPrintBtn"></button>
-      </div>
-      <div class="report-header">
-        <img src="assets/mtd-logo.png" alt="MTD Strategic Insurance Solutions" class="report-logo">
-        <div class="kicker" id="scReportKicker"></div>
-        <h1 id="scReportTitle"></h1>
-        <div class="org" id="rptOrg"></div>
-      </div>
-      <div class="report-body">
-        <table class="meta-table">
-          <tr>
-            <td class="label" id="scReportMetaCompleted"></td>
-            <td id="rptName"></td>
-            <td class="label" id="scReportMetaDate"></td>
-            <td id="rptDate"></td>
-          </tr>
-          <tr>
-            <td class="label">Report basis</td>
-            <td colspan="3" id="scReportBasis"></td>
-          </tr>
-        </table>
-
-        <div class="report-section">
-          <h2 id="scReportHeadingExec"></h2>
-          <p id="rptExecSummary"></p>
-        </div>
-
-        <div class="report-section">
-          <h2 id="scReportHeadingScore"></h2>
-          <table class="score-table" id="rptScoreTable"></table>
-        </div>
-
-        <div class="report-section">
-          <h2 id="scReportHeadingPatterns"></h2>
-          <p id="rptPatterns"></p>
-        </div>
-
-        <div class="report-section">
-          <h2 id="scReportHeadingInterp"></h2>
-          <div id="rptInterpretation"></div>
-        </div>
-
-        <div class="report-section">
-          <h2 id="scReportHeadingValidate"></h2>
-          <p id="scReportValidateIntro"></p>
-          <table class="score-table" id="rptValidationTable"></table>
-        </div>
-
-        <div class="report-section">
-          <h2 id="scReportHeadingFollowup"></h2>
-          <div id="rptFollowUp"></div>
-        </div>
-
-        <div class="report-section">
-          <h2 id="scReportHeadingClosing"></h2>
-          <p id="rptClosing"></p>
-        </div>
-
-        <p class="disclaimer" id="rptSource"></p>
-      </div>
-
-      <div style="text-align:center; margin-top:28px; padding:28px; background:var(--green-pale); border-radius:var(--radius);">
-        <p style="font-family:var(--serif); font-size:1.1rem; color:var(--ink); margin:0 0 4px;" id="scReportBookingHeading"></p>
-        <p style="font-size:.9rem; color:var(--ink-soft); margin:0 0 18px;" id="scReportBookingSub"></p>
+      <div class="snap-cta">
+        <p class="snap-cta-heading" id="scSnapBookingHeading"></p>
+        <p class="snap-cta-sub" id="scSnapBookingSub"></p>
         <form id="contactForm" onsubmit="return submitContactAndBook(event)" style="text-align:left; max-width:480px; margin:0 auto;">
           <div class="field-row">
-            <div><label for="c_email" id="scReportLabelEmail"></label><input id="c_email" type="email" required></div>
-            <div><label for="c_phone" id="scReportLabelPhone"></label><input id="c_phone" type="tel" inputmode="numeric" maxlength="14" placeholder="(555) 555-5555" oninput="formatPhoneInput(this)"></div>
+            <div><label for="c_email" id="scSnapLabelEmail"></label><input id="c_email" type="email" required></div>
+            <div><label for="c_phone" id="scSnapLabelPhone"></label><input id="c_phone" type="tel" inputmode="numeric" maxlength="14" placeholder="(555) 555-5555" required pattern="\(\d{3}\) \d{3}-\d{4}" title="Enter a 10-digit phone number, e.g. (555) 555-5555" oninput="this.setCustomValidity(''); formatPhoneInput(this)"></div>
           </div>
           <div class="field-row">
-            <div><label for="c_state" id="scReportLabelState"></label>
+            <div><label for="c_state" id="scSnapLabelState"></label>
               <select id="c_state" required>
                 <option value="">Select…</option>
                 <option value="AL">AL</option><option value="AK">AK</option><option value="AZ">AZ</option><option value="AR">AR</option>
@@ -278,7 +172,7 @@
                 <option value="AS">AS</option><option value="GU">GU</option><option value="MP">MP</option><option value="PR">PR</option><option value="VI">VI</option>
               </select>
             </div>
-            <div><label for="c_renewal" id="scReportLabelRenewal"></label>
+            <div><label for="c_renewal" id="scSnapLabelRenewal"></label>
               <select id="c_renewal" required>
                 <option value="">Select…</option>
                 <option>January</option><option>February</option><option>March</option><option>April</option>
@@ -289,7 +183,7 @@
           </div>
           <div class="field-row">
             <div class="full">
-              <label for="c_interest" id="scReportLabelInterest"></label>
+              <label for="c_interest" id="scSnapLabelInterest"></label>
               <select id="c_interest" required>
                 <option value="">Select one…</option>
                 <option>Advisory support</option>
@@ -300,7 +194,7 @@
             </div>
           </div>
           <div style="text-align:center; margin-top:14px;">
-            <button class="btn btn-primary" type="submit" id="scReportBookingBtn"></button>
+            <button class="btn btn-primary" type="submit" id="scSnapBookingBtn"></button>
           </div>
         </form>
       </div>
@@ -330,14 +224,6 @@ const SCALE = [
   { label:"Not in Place", pts:1 },
 ];
 
-const TIER = {
-  5: { label:"Strength",        class:"r5" },
-  4: { label:"Solid Practice",  class:"r4" },
-  3: { label:"Developing",      class:"r3" },
-  2: { label:"Needs Attention", class:"r2" },
-  1: { label:"Priority Gap",    class:"r1" },
-};
-
 /* The 10 quiz questions live in questions.json, not here — that keeps
    them editable through the /admin content editor without touching code.
    This fetch kicks off as soon as the page loads; startQuiz() awaits it
@@ -348,12 +234,12 @@ const questionsReady = fetch('questions.json')
   .then(data => { QUESTIONS = data.questions; })
   .catch(err => { console.error('Failed to load questions.json:', err); });
 
-/* All other on-page copy (intro page, thank-you page, and the static
-   labels on the Snapshot Report) lives in site-content.json for the same
-   reason — editable through /admin without touching code. The Snapshot
-   Report's actual narrative (Executive Summary, Patterns, etc.) is NOT
-   here — that's generated from the quiz scores in renderReport() below,
-   since it has to change based on each person's answers. */
+/* All other on-page copy (the intro page, the wording of the preliminary
+   Snapshot, and the scoring bands) lives in site-content.json for the same
+   reason — editable through /admin without touching code. The rules that
+   decide WHICH Snapshot wording a given set of answers produces live in
+   computeSnapshot() below; each behavior's "why this may matter" sentence and
+   follow-up question live in questions.json. */
 const siteContentReady = fetch('site-content.json')
   .then(r => r.json())
   .then(data => { populateSiteContent(data); })
@@ -362,18 +248,15 @@ const siteContentReady = fetch('site-content.json')
 let SITE_CONTENT = {};
 
 function populateSiteContent(c){
-  SITE_CONTENT = c; // stashed so renderReport() can reach report.* strings too
+  SITE_CONTENT = c; // stashed so the Snapshot code can reach snapshot.* and scoring.*
   const setText = (id, val) => { const el = document.getElementById(id); if (el && val != null) el.textContent = val; };
 
-  // Quiz answer-choice wording (Consistently/Usually/.../Not in Place) and
-  // the rating-tier labels shown in the report (Strength/.../Priority Gap).
+  // Quiz answer-choice wording (Consistently/Usually/.../Not in Place).
   // Keyed by point value (pts_5..pts_1) rather than list position, so there
   // is nothing to accidentally drag-reorder in the editor and silently
   // scramble the scoring — only the label text itself is editable.
   const scale = c.scale || {};
   SCALE.forEach(s => { const v = scale['pts_' + s.pts]; if (v) s.label = v; });
-  const tiers = c.tiers || {};
-  [5,4,3,2,1].forEach(pts => { const v = tiers['pts_' + pts]; if (v) TIER[pts].label = v; });
 
   const global = c.global || {};
   setText('scHeaderSubtitle', global.header_subtitle);
@@ -398,53 +281,20 @@ function populateSiteContent(c){
   setText('scIntroLabelIndustry', intro.label_industry);
   setText('scIntroLabelEmployees', intro.label_employees);
 
-  const ty = c.thankyou || {};
-  setText('scThanksTitle', ty.title);
-  setText('scThanksSubtitle', ty.subtitle);
-  setText('scThanksLede', ty.lede);
-  setText('scThanksReceiveLabel', ty.receive_label);
-  setText('scThanksReceiveIntro', ty.receive_intro);
-  setText('scThanksCatLabel', ty.categories_label);
-  setText('scThanksCatIntro', ty.categories_intro);
-  setText('scThanksTagline', ty.tagline);
-  setText('scThanksReportBtn', ty.report_button);
-  setText('scThanksDisclaimer', ty.disclaimer);
-
-  const itemsEl = document.getElementById('scThanksReceiveItems');
-  if (itemsEl && Array.isArray(ty.receive_items)){
-    itemsEl.innerHTML = ty.receive_items.map(item => `<li>${item}</li>`).join('');
-  }
-
-  const catGrid = document.getElementById('scThanksCatGrid');
-  if (catGrid && Array.isArray(ty.categories)){
-    catGrid.innerHTML = ty.categories.map(cat =>
-      `<div class="cat-card"><h4>${cat.title}</h4><p>${cat.description}</p></div>`
-    ).join('');
-  }
-
-  const report = c.report || {};
-  setText('scReportKicker', report.kicker);
-  setText('scReportTitle', report.title);
-  setText('scReportPrintBtn', report.print_button);
-  setText('scReportMetaCompleted', report.meta_completed_by);
-  setText('scReportMetaDate', report.meta_assessment_date);
-  setText('scReportBasis', report.report_basis);
-  setText('scReportHeadingExec', report.heading_exec_summary);
-  setText('scReportHeadingScore', report.heading_score_profile);
-  setText('scReportHeadingPatterns', report.heading_patterns);
-  setText('scReportHeadingInterp', report.heading_interpretation);
-  setText('scReportHeadingValidate', report.heading_validate);
-  setText('scReportValidateIntro', report.validate_intro);
-  setText('scReportHeadingFollowup', report.heading_followup);
-  setText('scReportHeadingClosing', report.heading_closing);
-  setText('scReportLabelEmail', report.contact_email_label);
-  setText('scReportLabelPhone', report.contact_phone_label);
-  setText('scReportLabelState', report.contact_state_label);
-  setText('scReportLabelRenewal', report.contact_renewal_label);
-  setText('scReportLabelInterest', report.contact_interest_label);
-  setText('scReportBookingHeading', report.booking_heading);
-  setText('scReportBookingSub', report.booking_sub);
-  setText('scReportBookingBtn', report.booking_button);
+  // Static parts of the Snapshot screen. The result itself (pattern, strength,
+  // area, question) is built per respondent by renderSnapshot().
+  const snap = c.snapshot || {};
+  setText('scSnapTitle', snap.title);
+  setText('scSnapClosing', snap.closing);
+  setText('scSnapDisclaimer', snap.disclaimer);
+  setText('scSnapBookingHeading', snap.booking_heading);
+  setText('scSnapBookingSub', snap.booking_sub);
+  setText('scSnapBookingBtn', snap.booking_button);
+  setText('scSnapLabelEmail', snap.contact_email_label);
+  setText('scSnapLabelPhone', snap.contact_phone_label);
+  setText('scSnapLabelState', snap.contact_state_label);
+  setText('scSnapLabelRenewal', snap.contact_renewal_label);
+  setText('scSnapLabelInterest', snap.contact_interest_label);
 }
 
 /* Where lead submissions get sent — paste the "Catch Hook" webhook URL
@@ -452,11 +302,21 @@ function populateSiteContent(c){
    this unset simply skips sending; the booking link still works. */
 const LEAD_ENDPOINT = "https://hooks.zapier.com/hooks/catch/28995892/4mkzfkj/";
 
+/* Where every COMPLETED QuickCheck gets logged (whether or not the person
+   goes on to book). This must be a DIFFERENT webhook from LEAD_ENDPOINT:
+   LEAD_ENDPOINT's Zap sends the text and both emails, which should only
+   happen for real leads. Point this at a second "Catch Hook" (or any URL that
+   accepts a JSON POST) that just adds a row to a Completions sheet. Leaving it
+   empty skips completion logging. */
+const COMPLETION_ENDPOINT = "";
+
 /* ===================== app logic — no edits needed below ===================== */
 
 let current = 0;
 let answers = [];
 let respondent = {};
+let completionId = '';
+let snapshotResult = null;
 
 function showScreen(id){
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
@@ -475,7 +335,7 @@ async function startQuiz(e){
     date: new Date().toLocaleDateString('en-CA'), // YYYY-MM-DD in local time
   };
   await questionsReady; // make sure questions.json has loaded
-  await siteContentReady; // make sure scale/tier labels have loaded too
+  await siteContentReady; // make sure scale labels have loaded too
   answers = new Array(QUESTIONS.length).fill(null);
   showScreen('screen-quiz');
   renderQ();
@@ -508,17 +368,15 @@ function selectChoice(i){
     renderQ();
   } else {
     document.getElementById('progressFill').style.width = '100%';
-    showScreen('screen-thankyou');
+    completionId = newId();
+    renderSnapshot();
+    showScreen('screen-snapshot');
+    logCompletion();
   }
 }
 
 function prevQ(){
   if (current > 0){ current--; renderQ(); }
-}
-
-function showReport(){
-  renderReport();
-  showScreen('screen-report');
 }
 
 function formatPhoneInput(input){
@@ -536,6 +394,16 @@ function formatPhoneInput(input){
 
 async function submitContactAndBook(e){
   e.preventDefault();
+  const phoneDigits = document.getElementById('c_phone').value.replace(/\D/g, '');
+  if (phoneDigits.length !== 10){
+    const p = document.getElementById('c_phone');
+    p.setCustomValidity('Enter a 10-digit phone number, e.g. (555) 555-5555');
+    p.reportValidity();
+    return false;
+  }
+  const btn = document.getElementById('scSnapBookingBtn');
+  if (btn) btn.disabled = true; // guard against double-submits while the lead POST is in flight
+
   respondent.email = document.getElementById('c_email').value;
   respondent.phone = document.getElementById('c_phone').value;
   respondent.state = document.getElementById('c_state').value;
@@ -545,8 +413,7 @@ async function submitContactAndBook(e){
   // Wait for the lead POST to actually finish (bounded by a short timeout)
   // before navigating away. Navigating immediately after an un-awaited
   // fetch() relies on the browser's keepalive mode, which silently drops
-  // request bodies over ~64KB (our payload includes the full report HTML
-  // and can exceed that) — that was causing leads to arrive at Zapier
+  // request bodies over ~64KB — that once caused leads to arrive at Zapier
   // with an empty body.
   await sendLeadAndWait();
 
@@ -560,145 +427,197 @@ function sendLeadAndWait(){
   return Promise.race([leadPromise, timeout]);
 }
 
-function sendLead(){
-  if (!LEAD_ENDPOINT || LEAD_ENDPOINT.indexOf('REPLACE_WITH') === 0) return Promise.resolve();
+/* ===================== preliminary Snapshot ===================== */
 
-  const ratings = QUESTIONS.map((q,i) => ({
-    behavior: q.title.replace(/^\d+\.\s*/,''),
-    rating: SCALE[answers[i]].pts
-  }));
-  const avg = (ratings.reduce((s,r)=>s+r.rating,0) / ratings.length).toFixed(1);
-  const reportBody = document.querySelector('#screen-report .report-body');
+const SCORING_DEFAULTS = { strong_avg:4.5, strong_min:3, developing_avg:3.5, developing_min:2, several_avg:2.5 };
 
-  // Flat rating_1..rating_10 fields alongside the ratings array — Zapier's
-  // Catch Hook can flatten a nested array inconsistently depending on the
-  // sample it captured, so these give the Google Sheets step 10 unambiguous
-  // top-level fields to map one-per-column instead.
-  const flatRatings = {};
-  ratings.forEach((r, i) => { flatRatings['rating_' + (i + 1)] = r.rating; });
+// Reads the editable thresholds from site-content.json. Any value that is
+// missing, non-numeric, or outside 1–5 falls back to its default, and if the
+// bands are out of order (strong must be >= developing >= several) all
+// defaults are used, so a bad edit can never break the Snapshot.
+function getScoring(){
+  const raw = SITE_CONTENT.scoring || {};
+  const sc = {};
+  Object.keys(SCORING_DEFAULTS).forEach(k => {
+    const n = Number(raw[k]);
+    sc[k] = (raw[k] !== '' && raw[k] != null && isFinite(n) && n >= 1 && n <= 5) ? n : SCORING_DEFAULTS[k];
+  });
+  if (!(sc.strong_avg >= sc.developing_avg && sc.developing_avg >= sc.several_avg)) return { ...SCORING_DEFAULTS };
+  return sc;
+}
 
-  const payload = {
-    ...respondent,
-    average_score: avg,
-    ratings,
-    ...flatRatings,
-    report_html: reportBody ? reportBody.innerHTML : '',
+// pts: array of ten ratings (1–5), in question order. Pure function.
+function computeSnapshot(pts, sc){
+  sc = sc || getScoring();
+  const n = pts.length;
+  const sum = pts.reduce((s,p) => s + p, 0);
+  const avg = Math.round((sum / n) * 1000) / 1000;
+  const min = Math.min(...pts);
+  const max = Math.max(...pts);
+
+  let pattern;
+  if (avg >= sc.strong_avg && min >= sc.strong_min) pattern = 'strong';
+  else if (avg >= sc.developing_avg && min >= sc.developing_min) pattern = 'developing';
+  else if (avg >= sc.several_avg) pattern = 'several';
+  else pattern = 'foundational';
+
+  // Area to examine: lowest rating; ties go to the earliest question.
+  const area = pts.indexOf(min);
+
+  // All ten identical: no meaningful strength/area split, so use the first
+  // question purely as an example.
+  if (min === max){
+    return { avg, pattern, area: 0, strength: null, mode: 'all_equal' };
+  }
+
+  // Reported strength: highest rating excluding the area; ties go to the
+  // earliest question; only shown when it is 4 or higher.
+  let strength = null, best = -1;
+  pts.forEach((p, i) => { if (i !== area && p > best){ best = p; strength = i; } });
+  if (best < 4) strength = null;
+
+  const mode = min >= 4 ? 'all_high' : (strength === null ? 'no_strength' : 'normal');
+  return { avg, pattern, area, strength, mode };
+}
+
+function fill(tpl, vars){
+  return String(tpl == null ? '' : tpl).replace(/\{(\w+)\}/g, (m, k) => (k in vars ? vars[k] : m));
+}
+
+function behaviorName(i){ return QUESTIONS[i].title.replace(/^\d+\.\s*/, ''); }
+function currentPts(){ return answers.map(a => SCALE[a].pts); }
+
+// Ordered pieces of the Snapshot, shared by the on-screen view and the email.
+function snapshotParts(r){
+  const s = SITE_CONTENT.snapshot || {};
+  const sel = i => fill(s.selected_line, { behavior: behaviorName(i), answer: SCALE[answers[i]].label });
+  const parts = [{ type:'pattern', intro: s.pattern_intro, name: s['pattern_' + r.pattern] }];
+
+  if (r.mode === 'all_equal'){
+    parts.push({ type:'note', text: s.equal_note });
+    parts.push({ type:'block', label: s.equal_example_label, text: sel(0) });
+    parts.push({ type:'block', label: s.question_label, text: QUESTIONS[0].prompt });
+    parts.push({ type:'note', text: s.equal_next });
+    return parts;
+  }
+
+  if (r.strength !== null) parts.push({ type:'block', label: s.strength_label, text: sel(r.strength) });
+  else if (r.mode === 'no_strength') parts.push({ type:'note', text: s.no_strength_note });
+
+  const allHigh = r.mode === 'all_high';
+  parts.push({ type:'block', label: allHigh ? s.area_label_validate : s.area_label, text: sel(r.area) });
+  parts.push({ type:'block', label: s.why_label, text: allHigh ? s.why_all_high : QUESTIONS[r.area].implication });
+  parts.push({ type:'block', label: s.question_label, text: QUESTIONS[r.area].prompt });
+  return parts;
+}
+
+function renderSnapshot(){
+  snapshotResult = computeSnapshot(currentPts());
+  const body = document.getElementById('snapBody');
+  body.textContent = '';
+  const el = (cls, text, tag) => { const e = document.createElement(tag || 'div'); e.className = cls; e.textContent = text; return e; };
+  snapshotParts(snapshotResult).forEach(p => {
+    if (p.type === 'pattern'){
+      const box = el('snap-pattern', '');
+      box.appendChild(el('snap-label', p.intro));
+      box.appendChild(el('snap-pattern-name', p.name));
+      body.appendChild(box);
+    } else if (p.type === 'note'){
+      body.appendChild(el('snap-note', p.text, 'p'));
+    } else {
+      const box = el('snap-block', '');
+      box.appendChild(el('snap-label', p.label + ':'));
+      box.appendChild(el('snap-text', p.text));
+      body.appendChild(box);
+    }
+  });
+}
+
+function escHtml(t){
+  return String(t == null ? '' : t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// Inline-styled HTML for the emailed copy: the same saved result shown on
+// screen, plus the respondent's own ten self-ratings.
+function snapshotEmailHtml(r){
+  const s = SITE_CONTENT.snapshot || {};
+  const f = 'font-family:Arial,Helvetica,sans-serif;';
+  let h = `<div style="${f}color:#1d2b24;max-width:640px;">`;
+  h += `<h2 style="${f}font-size:20px;margin:0 0 16px;">${escHtml(s.title)}</h2>`;
+  snapshotParts(r).forEach(p => {
+    if (p.type === 'pattern'){
+      h += `<div style="background:#eaf5ee;border-radius:6px;padding:14px 16px;margin:0 0 18px;"><div style="font-size:14px;color:#1f5a3a;">${escHtml(p.intro)}</div><div style="font-size:20px;font-weight:bold;color:#1f5a3a;margin-top:4px;">${escHtml(p.name)}</div></div>`;
+    } else if (p.type === 'note'){
+      h += `<p style="${f}font-size:15px;color:#4a5a52;margin:0 0 18px;">${escHtml(p.text)}</p>`;
+    } else {
+      h += `<div style="margin:0 0 18px;"><div style="font-size:12px;font-weight:bold;text-transform:uppercase;color:#4a5a52;margin-bottom:4px;">${escHtml(p.label)}:</div><div style="font-size:15px;">${escHtml(p.text)}</div></div>`;
+    }
+  });
+  h += `<p style="${f}font-size:14px;color:#4a5a52;margin:22px 0 0;padding-top:14px;border-top:1px dashed #cfd8d2;">${escHtml(s.closing)}</p>`;
+  h += `<h3 style="${f}font-size:15px;margin:24px 0 6px;">${escHtml(s.email_ratings_heading)}</h3>`;
+  h += `<p style="${f}font-size:13px;color:#4a5a52;margin:0 0 8px;">${escHtml(s.email_ratings_note)}</p>`;
+  h += `<table style="border-collapse:collapse;width:100%;${f}font-size:14px;">`;
+  QUESTIONS.forEach((q, i) => {
+    h += `<tr><td style="border:1px solid #cfd8d2;padding:8px 10px;">${escHtml(behaviorName(i))}</td><td style="border:1px solid #cfd8d2;padding:8px 10px;white-space:nowrap;">${escHtml(SCALE[answers[i]].label)}</td></tr>`;
+  });
+  h += `</table>`;
+  h += `<p style="${f}font-size:12px;color:#6b7a72;margin:20px 0 0;">${escHtml(s.disclaimer)}</p></div>`;
+  return h;
+}
+
+function newId(){
+  try { if (window.crypto && crypto.randomUUID) return crypto.randomUUID(); } catch (_) {}
+  return 'qc-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 10);
+}
+
+// Fields shared by the completion log and the lead payload.
+function resultFields(){
+  const r = snapshotResult;
+  const pts = currentPts();
+  const flat = {};
+  pts.forEach((p, i) => { flat['rating_' + (i + 1)] = p; });
+  return {
+    completion_id: completionId,
+    average_score: (pts.reduce((s,p) => s + p, 0) / pts.length).toFixed(1),
+    ...flat,
+    overall_pattern: (SITE_CONTENT.snapshot || {})['pattern_' + r.pattern] || r.pattern,
+    area_to_examine: behaviorName(r.area),
+    reported_strength: r.strength === null ? '' : behaviorName(r.strength),
     source: 'Cost Control Behaviors QuickCheck'
   };
+}
 
-  // Content-Type is deliberately 'text/plain', not 'application/json'.
-  // 'application/json' makes the browser send a CORS preflight (OPTIONS)
-  // request first; if that preflight isn't answered the way the browser
-  // expects, the real POST never goes out. 'text/plain' is a CORS
-  // "simple request" so no preflight happens — Zapier's Catch Hook still
-  // parses the body as JSON regardless of the declared content type.
-  return fetch(LEAD_ENDPOINT, {
+// Content-Type is deliberately 'text/plain', not 'application/json': JSON
+// would trigger a CORS preflight (OPTIONS) that Zapier does not answer, so
+// the real POST would never go out. text/plain is a CORS "simple request";
+// Zapier's Catch Hook still parses the body as JSON.
+function postJson(url, payload, label){
+  return fetch(url, {
     method: 'POST',
     headers: { 'Content-Type': 'text/plain' },
     body: JSON.stringify(payload),
     keepalive: true
-  }).catch((err) => {
-    // Non-fatal — booking still proceeds even if the lead post fails —
-    // but log it so it shows up in the browser console for debugging.
-    console.error('QuickCheck lead POST failed:', err);
-  });
+  }).catch(err => { console.error('QuickCheck ' + label + ' POST failed:', err); });
 }
 
-function renderReport(){
-  document.getElementById('rptOrg').textContent = respondent.org;
-  document.getElementById('rptName').textContent = `${respondent.name}${respondent.role ? ' — ' + respondent.role : ''}`;
-  document.getElementById('rptDate').textContent = respondent.date
-    ? new Date(respondent.date + 'T00:00:00').toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' })
-    : '';
+// Logs every finished QuickCheck the moment the Snapshot appears, whether or
+// not the person goes on to book. No contact details exist yet at this point.
+function logCompletion(){
+  if (!COMPLETION_ENDPOINT) return Promise.resolve();
+  return postJson(COMPLETION_ENDPOINT, { event:'completed', ...respondent, ...resultFields() }, 'completion');
+}
 
-  const ratings = QUESTIONS.map((q,i) => ({ q, pts: SCALE[answers[i]].pts }));
-  const sorted = [...ratings].sort((a,b) => b.pts - a.pts);
-  const highest = sorted[0].pts;
-  const lowest = sorted[sorted.length-1].pts;
-  const topBehaviors = sorted.filter(r => r.pts === highest).slice(0,2).map(r => r.q.title.replace(/^\d+\.\s*/,''));
-  const bottomBehaviors = [...sorted].reverse().filter(r => r.pts === lowest).slice(0,2).map(r => r.q.title.replace(/^\d+\.\s*/,''));
-  const countByTier = {5:0,4:0,3:0,2:0,1:0};
-  ratings.forEach(r => countByTier[r.pts]++);
-  const avg = ratings.reduce((s,r)=>s+r.pts,0) / ratings.length;
-
-  // Executive Summary
-  const strongCount = countByTier[5] + countByTier[4];
-  const weakCount = countByTier[1] + countByTier[2];
-  document.getElementById('rptExecSummary').textContent =
-    `${respondent.org} rated ${strongCount} of the 10 Cost Control Behaviors™ at Consistently or Usually, and ${weakCount} at Rarely or Not in Place. `
-    + `The strongest reported area${topBehaviors.length>1?'s are':' is'} ${topBehaviors.join(' and ')}. `
-    + (weakCount > 0
-        ? `The most significant opportunity for improvement is in ${bottomBehaviors.join(' and ')}. `
-        : `No behavior was rated below Sometimes, suggesting a generally consistent operational baseline. `)
-    + `Because this Snapshot is self-reported, these ratings should be treated as a starting perception baseline to validate against real operating data, not a final conclusion.`;
-
-  // Score Profile table
-  const rpt = SITE_CONTENT.report || {};
-  const col1 = rpt.score_table_col1 || 'Cost Control Behavior';
-  const col2 = rpt.score_table_col2 || 'Rating';
-  let scoreHtml = `<tr><th>${col1}</th><th style="width:160px;">${col2}</th></tr>`;
-  ratings.forEach(r => {
-    const tier = TIER[r.pts];
-    scoreHtml += `<tr><td>${r.q.title.replace(/^\d+\.\s*/,'')}</td><td><span class="rating-pill"><span class="rating-num ${tier.class}">${r.pts}</span><span class="tier-label">${tier.label}</span></span></td></tr>`;
-  });
-  document.getElementById('rptScoreTable').innerHTML = scoreHtml;
-
-  // Notable Patterns
-  let patternDesc = avg >= 4.3 ? 'concentrated at the high end of the scale' : avg >= 3.3 ? 'mixed, with more strengths than gaps' : avg >= 2.3 ? 'mixed, with meaningful gaps alongside real strengths' : 'concentrated at the lower end of the scale';
-  document.getElementById('rptPatterns').textContent =
-    `Ratings across the 10 behaviors were ${patternDesc} (average rating: ${avg.toFixed(1)} of 5). `
-    + `The highest-rated behavior${topBehaviors.length>1?'s were':' was'} ${topBehaviors.join(' and ')} (${highest}/5). `
-    + `The lowest-rated behavior${bottomBehaviors.length>1?'s were':' was'} ${bottomBehaviors.join(' and ')} (${lowest}/5).`;
-
-  // Interpretation
-  let interp = '';
-  if (countByTier[1] + countByTier[2] > 0){
-    interp += `<h3>Behaviors needing attention</h3><p>${countByTier[1]+countByTier[2]} behavior(s) were rated Rarely or Not in Place. These are the clearest opportunities to reduce claim severity and long-term cost, and are addressed directly in the Priority Follow-Up section below.</p>`;
-  }
-  if (countByTier[3] > 0){
-    interp += `<h3>Developing behaviors</h3><p>${countByTier[3]} behavior(s) were rated Sometimes. These reflect practices that exist but are not yet consistently followed — the goal is turning an occasional practice into a reliable one.</p>`;
-  }
-  if (countByTier[4] + countByTier[5] > 0){
-    interp += `<h3>Reported strengths</h3><p>${countByTier[4]+countByTier[5]} behavior(s) were rated Usually or Consistently. Because this is a self-assessment, these should still be validated with real operating evidence rather than assumed to be fully mature.</p>`;
-  }
-  document.getElementById('rptInterpretation').innerHTML = interp;
-
-  // Validation measures table (static, all 10)
-  const valCol1 = rpt.validation_table_col1 || 'Cost Control Behavior';
-  const valCol2 = rpt.validation_table_col2 || 'Example Validation Measure';
-  let valHtml = `<tr><th>${valCol1}</th><th>${valCol2}</th></tr>`;
-  QUESTIONS.forEach(q => {
-    valHtml += `<tr><td>${q.title.replace(/^\d+\.\s*/,'')}</td><td>${q.validation}</td></tr>`;
-  });
-  document.getElementById('rptValidationTable').innerHTML = valHtml;
-
-  // Priority Follow-Up
-  const priority = sorted.filter(r => r.pts <= 2).sort((a,b)=>a.pts-b.pts);
-  const developing = sorted.filter(r => r.pts === 3);
-  let followUp = '';
-  if (priority.length > 0){
-    priority.slice(0,4).forEach(r => {
-      followUp += `<h3>${r.q.title.replace(/^\d+\.\s*/,'')}</h3><p>${r.q.improve}</p>`;
-    });
-  } else if (developing.length > 0){
-    developing.slice(0,3).forEach(r => {
-      followUp += `<h3>${r.q.title.replace(/^\d+\.\s*/,'')}</h3><p>${r.q.improve}</p>`;
-    });
-  } else {
-    followUp += `<p>No behavior was rated below Sometimes. The priority now is validating that top-rated behaviors are genuinely consistent — not just perceived as consistent — using the operating measures in Section 4, and revisiting this Snapshot periodically to confirm performance holds.</p>`;
-  }
-  document.getElementById('rptFollowUp').innerHTML = followUp;
-
-  // Closing
-  document.getElementById('rptClosing').textContent =
-    `${respondent.org}'s Cost Control Behaviors™ Snapshot reflects a self-reported operational baseline as of ${document.getElementById('rptDate').textContent}. `
-    + (weakCount > 0
-        ? `The clearest next step is addressing the lowest-rated behaviors above, since these have the most direct influence on future claim outcomes and cost. `
-        : `The clearest next step is validating today's strong self-reported ratings against real operating data. `)
-    + `A member of the MTD Strategic team is available to walk through these results and discuss next steps in a Strategy Conversation.`;
-
-  document.getElementById('rptSource').textContent =
-    `Source: Cost Control Behaviors™ QuickCheck completed by ${respondent.name} for ${respondent.org} on ${document.getElementById('rptDate').textContent}. This report is generated from self-reported ratings only; validation measures and recommendations are general, educational guidance and not a substitute for a full risk review.`;
+function sendLead(){
+  if (!LEAD_ENDPOINT || LEAD_ENDPOINT.indexOf('REPLACE_WITH') === 0) return Promise.resolve();
+  const ratings = QUESTIONS.map((q,i) => ({ behavior: behaviorName(i), rating: SCALE[answers[i]].pts }));
+  const payload = {
+    event: 'lead',
+    ...respondent,
+    ratings, // array kept for compatibility; rating_1..rating_10 below are the unambiguous per-column fields
+    ...resultFields(),
+    report_html: snapshotEmailHtml(snapshotResult)
+  };
+  return postJson(LEAD_ENDPOINT, payload, 'lead');
 }
 </script>
 </body>
