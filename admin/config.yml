@@ -115,11 +115,21 @@ collections:
               - { label: "Disclaimer", name: "disclaimer", widget: "text" }
               - { label: "Booking box heading", name: "booking_heading", widget: "string" }
               - { label: "Booking box subtext", name: "booking_sub", widget: "text" }
-              - { label: "Form: Email label", name: "contact_email_label", widget: "string" }
-              - { label: "Form: Phone label", name: "contact_phone_label", widget: "string" }
-              - { label: "Form: State label", name: "contact_state_label", widget: "string" }
-              - { label: "Form: Renewal month label", name: "contact_renewal_label", widget: "string" }
-              - { label: "Form: Interest label", name: "contact_interest_label", widget: "string" }
               - { label: "Booking button text", name: "booking_button", widget: "string" }
               - { label: "Email: heading above the ratings list", name: "email_ratings_heading", widget: "string" }
               - { label: "Email: note under that heading", name: "email_ratings_note", widget: "text" }
+          - label: "Results-Ready Step (asks for email and phone before the Snapshot)"
+            name: "gate"
+            widget: "object"
+            fields:
+              - { label: "Small heading above the title", name: "kicker", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Intro text", name: "sub", widget: "text" }
+              - { label: "Email label", name: "email_label", widget: "string" }
+              - { label: "Phone label", name: "phone_label", widget: "string" }
+              - { label: "Note above the optional fields", name: "optional_note", widget: "string" }
+              - { label: "State label", name: "state_label", widget: "string" }
+              - { label: "Renewal month label", name: "renewal_label", widget: "string" }
+              - { label: "Interest label", name: "interest_label", widget: "string" }
+              - { label: "Button text", name: "button", widget: "string" }
+              - { label: "Small privacy line under the button", name: "privacy", widget: "string" }

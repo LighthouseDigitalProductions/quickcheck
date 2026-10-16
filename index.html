@@ -70,6 +70,10 @@
   .snap-cta{text-align:center; margin-top:28px; padding:28px; background:var(--green-pale); border-radius:var(--radius);}
   .snap-cta-heading{font-family:var(--serif); font-size:1.1rem; color:var(--ink); margin:0 0 4px;}
   .snap-cta-sub{font-size:.9rem; color:var(--ink-soft); margin:0 0 18px;}
+  .gate-card{margin-top:0; padding:34px 28px;}
+  .gate-kicker{font-size:.8rem; font-weight:600; letter-spacing:.03em; text-transform:uppercase; color:var(--green-deep); margin:0 0 6px;}
+  .gate-optional{font-size:.85rem; color:var(--ink-soft); margin:18px 0 0;}
+  .gate-privacy{font-size:.78rem; color:var(--ink-soft); text-align:center; margin:12px 0 0;}
 
   .screen{display:none;}
   .screen.active{display:block;}
@@ -135,26 +139,21 @@
       </div>
     </section>
 
-    <!-- ============ SCREEN 3: PRELIMINARY SNAPSHOT ============ -->
-    <section id="screen-snapshot" class="screen">
-      <h1 class="page-title" id="scSnapTitle"></h1>
-      <div class="snap-card">
-        <div id="snapBody"></div>
-        <p class="snap-closing" id="scSnapClosing"></p>
-      </div>
-      <p class="disclaimer" id="scSnapDisclaimer"></p>
-
-      <div class="snap-cta">
-        <p class="snap-cta-heading" id="scSnapBookingHeading"></p>
-        <p class="snap-cta-sub" id="scSnapBookingSub"></p>
-        <form id="contactForm" onsubmit="return submitContactAndBook(event)" style="text-align:left; max-width:480px; margin:0 auto;">
+    <!-- ============ SCREEN 3: RESULTS-READY STEP (email + phone) ============ -->
+    <section id="screen-gate" class="screen">
+      <div class="snap-cta gate-card">
+        <p class="gate-kicker" id="scGateKicker"></p>
+        <h1 class="page-title" id="scGateTitle" style="margin-bottom:6px;"></h1>
+        <p class="snap-cta-sub" id="scGateSub"></p>
+        <form id="contactForm" onsubmit="return submitGate(event)" style="text-align:left; max-width:480px; margin:0 auto;">
           <div class="field-row">
-            <div><label for="c_email" id="scSnapLabelEmail"></label><input id="c_email" type="email" required></div>
-            <div><label for="c_phone" id="scSnapLabelPhone"></label><input id="c_phone" type="tel" inputmode="numeric" maxlength="14" placeholder="(555) 555-5555" required pattern="\(\d{3}\) \d{3}-\d{4}" title="Enter a 10-digit phone number, e.g. (555) 555-5555" oninput="this.setCustomValidity(''); formatPhoneInput(this)"></div>
+            <div><label for="c_email" id="scGateLabelEmail"></label><input id="c_email" type="email" required></div>
+            <div><label for="c_phone" id="scGateLabelPhone"></label><input id="c_phone" type="tel" inputmode="numeric" maxlength="14" placeholder="(555) 555-5555" required pattern="\(\d{3}\) \d{3}-\d{4}" title="Enter a 10-digit phone number, e.g. (555) 555-5555" oninput="this.setCustomValidity(''); formatPhoneInput(this)"></div>
           </div>
+          <p class="gate-optional" id="scGateOptionalNote"></p>
           <div class="field-row">
-            <div><label for="c_state" id="scSnapLabelState"></label>
-              <select id="c_state" required>
+            <div><label for="c_state" id="scGateLabelState"></label>
+              <select id="c_state">
                 <option value="">Select…</option>
                 <option value="AL">AL</option><option value="AK">AK</option><option value="AZ">AZ</option><option value="AR">AR</option>
                 <option value="CA">CA</option><option value="CO">CO</option><option value="CT">CT</option><option value="DE">DE</option>
@@ -172,8 +171,8 @@
                 <option value="AS">AS</option><option value="GU">GU</option><option value="MP">MP</option><option value="PR">PR</option><option value="VI">VI</option>
               </select>
             </div>
-            <div><label for="c_renewal" id="scSnapLabelRenewal"></label>
-              <select id="c_renewal" required>
+            <div><label for="c_renewal" id="scGateLabelRenewal"></label>
+              <select id="c_renewal">
                 <option value="">Select…</option>
                 <option>January</option><option>February</option><option>March</option><option>April</option>
                 <option>May</option><option>June</option><option>July</option><option>August</option>
@@ -183,8 +182,8 @@
           </div>
           <div class="field-row">
             <div class="full">
-              <label for="c_interest" id="scSnapLabelInterest"></label>
-              <select id="c_interest" required>
+              <label for="c_interest" id="scGateLabelInterest"></label>
+              <select id="c_interest">
                 <option value="">Select one…</option>
                 <option>Advisory support</option>
                 <option>An insurance review</option>
@@ -194,9 +193,26 @@
             </div>
           </div>
           <div style="text-align:center; margin-top:14px;">
-            <button class="btn btn-primary" type="submit" id="scSnapBookingBtn"></button>
+            <button class="btn btn-primary" type="submit" id="scGateBtn"></button>
           </div>
+          <p class="gate-privacy" id="scGatePrivacy"></p>
         </form>
+      </div>
+    </section>
+
+    <!-- ============ SCREEN 4: PRELIMINARY SNAPSHOT ============ -->
+    <section id="screen-snapshot" class="screen">
+      <h1 class="page-title" id="scSnapTitle"></h1>
+      <div class="snap-card">
+        <div id="snapBody"></div>
+        <p class="snap-closing" id="scSnapClosing"></p>
+      </div>
+      <p class="disclaimer" id="scSnapDisclaimer"></p>
+
+      <div class="snap-cta" id="snapBookingBox">
+        <p class="snap-cta-heading" id="scSnapBookingHeading"></p>
+        <p class="snap-cta-sub" id="scSnapBookingSub"></p>
+        <button class="btn btn-primary" type="button" onclick="bookConversation()" id="scSnapBookingBtn"></button>
       </div>
     </section>
 
@@ -290,11 +306,23 @@ function populateSiteContent(c){
   setText('scSnapBookingHeading', snap.booking_heading);
   setText('scSnapBookingSub', snap.booking_sub);
   setText('scSnapBookingBtn', snap.booking_button);
-  setText('scSnapLabelEmail', snap.contact_email_label);
-  setText('scSnapLabelPhone', snap.contact_phone_label);
-  setText('scSnapLabelState', snap.contact_state_label);
-  setText('scSnapLabelRenewal', snap.contact_renewal_label);
-  setText('scSnapLabelInterest', snap.contact_interest_label);
+  // Hide the scheduling box until a real scheduling link has been set.
+  const box = document.getElementById('snapBookingBox');
+  if (box) box.style.display = BOOKING_URL ? '' : 'none';
+
+  // Results-ready step shown right after question 10 (collects email + phone).
+  const gate = c.gate || {};
+  setText('scGateKicker', gate.kicker);
+  setText('scGateTitle', gate.title);
+  setText('scGateSub', gate.sub);
+  setText('scGateLabelEmail', gate.email_label);
+  setText('scGateLabelPhone', gate.phone_label);
+  setText('scGateOptionalNote', gate.optional_note);
+  setText('scGateLabelState', gate.state_label);
+  setText('scGateLabelRenewal', gate.renewal_label);
+  setText('scGateLabelInterest', gate.interest_label);
+  setText('scGateBtn', gate.button);
+  setText('scGatePrivacy', gate.privacy);
 }
 
 /* Where lead submissions get sent — paste the "Catch Hook" webhook URL
@@ -309,6 +337,11 @@ const LEAD_ENDPOINT = "https://hooks.zapier.com/hooks/catch/28995892/4mkzfkj/";
    accepts a JSON POST) that just adds a row to a Completions sheet. Leaving it
    empty skips completion logging. */
 const COMPLETION_ENDPOINT = "";
+
+/* Where the "Schedule a Strategy Conversation" button on the Snapshot goes.
+   Paste MTD's scheduling link here once chosen. While it is blank the
+   scheduling box on the Snapshot is hidden. */
+const BOOKING_URL = "";
 
 /* ===================== app logic — no edits needed below ===================== */
 
@@ -369,9 +402,9 @@ function selectChoice(i){
   } else {
     document.getElementById('progressFill').style.width = '100%';
     completionId = newId();
-    renderSnapshot();
-    showScreen('screen-snapshot');
-    logCompletion();
+    snapshotResult = computeSnapshot(currentPts());
+    logCompletion(); // every finished quiz is logged, even if they stop at the next step
+    showScreen('screen-gate');
   }
 }
 
@@ -392,33 +425,33 @@ function formatPhoneInput(input){
   input.value = formatted;
 }
 
-async function submitContactAndBook(e){
+async function submitGate(e){
   e.preventDefault();
-  const phoneDigits = document.getElementById('c_phone').value.replace(/\D/g, '');
-  if (phoneDigits.length !== 10){
-    const p = document.getElementById('c_phone');
-    p.setCustomValidity('Enter a 10-digit phone number, e.g. (555) 555-5555');
-    p.reportValidity();
+  const phone = document.getElementById('c_phone');
+  if (phone.value.replace(/\D/g, '').length !== 10){
+    phone.setCustomValidity('Enter a 10-digit phone number, e.g. (555) 555-5555');
+    phone.reportValidity();
     return false;
   }
-  const btn = document.getElementById('scSnapBookingBtn');
-  if (btn) btn.disabled = true; // guard against double-submits while the lead POST is in flight
+  const btn = document.getElementById('scGateBtn');
+  btn.disabled = true; // guard against double-submits while the lead POST is in flight
 
   respondent.email = document.getElementById('c_email').value;
-  respondent.phone = document.getElementById('c_phone').value;
+  respondent.phone = phone.value;
   respondent.state = document.getElementById('c_state').value;
   respondent.renewal_month = document.getElementById('c_renewal').value;
   respondent.interest = document.getElementById('c_interest').value;
 
-  // Wait for the lead POST to actually finish (bounded by a short timeout)
-  // before navigating away. Navigating immediately after an un-awaited
-  // fetch() relies on the browser's keepalive mode, which silently drops
-  // request bodies over ~64KB — that once caused leads to arrive at Zapier
-  // with an empty body.
+  // Wait for the lead POST to finish (bounded by a short timeout) before
+  // moving on, so the request is not cut off mid-flight.
+  renderSnapshot();
   await sendLeadAndWait();
-
-  location.href = 'https://calendly.com/sacredplans/30min';
+  showScreen('screen-snapshot');
   return false;
+}
+
+function bookConversation(){
+  if (BOOKING_URL) location.href = BOOKING_URL;
 }
 
 function sendLeadAndWait(){
@@ -512,7 +545,7 @@ function snapshotParts(r){
 }
 
 function renderSnapshot(){
-  snapshotResult = computeSnapshot(currentPts());
+  if (!snapshotResult) snapshotResult = computeSnapshot(currentPts());
   const body = document.getElementById('snapBody');
   body.textContent = '';
   const el = (cls, text, tag) => { const e = document.createElement(tag || 'div'); e.className = cls; e.textContent = text; return e; };
