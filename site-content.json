@@ -60,7 +60,8 @@
     "booking_sub": "Schedule a short conversation with the MTD Strategic team.",
     "booking_button": "Schedule a Strategy Conversation",
     "email_ratings_heading": "Your self-reported ratings",
-    "email_ratings_note": "These are your own self-ratings, not confirmed performance grades."
+    "email_ratings_note": "These are your own self-ratings, not confirmed performance grades.",
+    "booking_url": "https://calendly.com/sacredplans/30min"
   },
   "gate": {
     "kicker": "All ten questions answered",
