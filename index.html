@@ -611,30 +611,30 @@ function resultFields(){
   };
 }
 
-// Content-Type is deliberately 'text/plain', not 'application/json': JSON
-// would trigger a CORS preflight (OPTIONS) that the webhook may not answer, so
-// the real POST would never go out. text/plain is a CORS "simple request";
-// the webhook still parses the body as JSON.
-function postJson(url, payload, label){
-  return fetch(url, {
-    method: 'POST',
-    headers: { 'Content-Type': 'text/plain' },
-    body: JSON.stringify(payload),
-    keepalive: true
-  }).catch(err => { console.error('QuickCheck ' + label + ' POST failed:', err); });
+// Sent as a plain form post (application/x-www-form-urlencoded), one field per
+// value. That is a CORS "simple request" (no preflight), and Make's custom
+// webhook turns it straight into separate fields (name, email, phone,
+// rating_1 ... rating_10, report_html) with no JSON-parsing step needed.
+function postForm(url, payload, label){
+  const body = new URLSearchParams();
+  Object.keys(payload).forEach(k => {
+    const v = payload[k];
+    if (v !== null && typeof v === 'object') return; // flat fields only
+    body.append(k, v == null ? '' : String(v));
+  });
+  return fetch(url, { method: 'POST', body, keepalive: true })
+    .catch(err => { console.error('QuickCheck ' + label + ' POST failed:', err); });
 }
 
 function sendLead(){
   if (!LEAD_ENDPOINT || LEAD_ENDPOINT.indexOf('REPLACE_WITH') === 0) return Promise.resolve();
-  const ratings = QUESTIONS.map((q,i) => ({ behavior: behaviorName(i), rating: SCALE[answers[i]].pts }));
   const payload = {
     event: 'lead',
     ...respondent,
-    ratings, // array kept for compatibility; rating_1..rating_10 below are the unambiguous per-column fields
-    ...resultFields(),
+    ...resultFields(), // includes rating_1 ... rating_10 as separate fields
     report_html: snapshotEmailHtml(snapshotResult)
   };
-  return postJson(LEAD_ENDPOINT, payload, 'lead');
+  return postForm(LEAD_ENDPOINT, payload, 'lead');
 }
 </script>
 </body>
