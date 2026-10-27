@@ -148,7 +148,7 @@
         <form id="contactForm" onsubmit="return submitGate(event)" style="text-align:left; max-width:480px; margin:0 auto;">
           <div class="field-row">
             <div><label for="c_email" id="scGateLabelEmail"></label><input id="c_email" type="email" required></div>
-            <div><label for="c_phone" id="scGateLabelPhone"></label><input id="c_phone" type="tel" inputmode="numeric" maxlength="14" placeholder="(555) 555-5555" required pattern="\(\d{3}\) \d{3}-\d{4}" title="Enter a 10-digit phone number, e.g. (555) 555-5555" oninput="this.setCustomValidity(''); formatPhoneInput(this)"></div>
+            <div><label for="c_phone" id="scGateLabelPhone"></label><input id="c_phone" type="tel" inputmode="numeric" maxlength="14" placeholder="(555) 555-5555" pattern="\(\d{3}\) \d{3}-\d{4}" title="Enter a 10-digit phone number, e.g. (555) 555-5555" oninput="this.setCustomValidity(''); formatPhoneInput(this)"></div>
           </div>
           <p class="gate-optional" id="scGateOptionalNote"></p>
           <div class="field-row">
@@ -188,7 +188,7 @@
                 <option>Advisory support</option>
                 <option>An insurance review</option>
                 <option>Both</option>
-                <option>Just my results for now</option>
+                <option selected>Just my results for now</option>
               </select>
             </div>
           </div>
@@ -424,7 +424,7 @@ function formatPhoneInput(input){
 async function submitGate(e){
   e.preventDefault();
   const phone = document.getElementById('c_phone');
-  if (phone.value.replace(/\D/g, '').length !== 10){
+  if (phone.value.trim() !== '' && phone.value.replace(/\D/g, '').length !== 10){
     phone.setCustomValidity('Enter a 10-digit phone number, e.g. (555) 555-5555');
     phone.reportValidity();
     return false;

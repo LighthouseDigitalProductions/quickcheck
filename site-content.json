@@ -55,10 +55,10 @@
     "equal_example_label": "A practice to use as an example",
     "equal_next": "The next step is to check how consistently these practices work in daily operations.",
     "closing": "This Snapshot reflects your answers. A conversation can test how these practices work day to day, review relevant claims and operating information where available, and identify a practical starting point.",
-    "disclaimer": "The Cost Control Behaviors™ Snapshot is a high-level educational operational assessment based on your own answers. It is not legal, safety, or insurance advice, and it does not guarantee insurance savings, premium reductions, or underwriting results.",
-    "booking_heading": "Want to talk through these results?",
-    "booking_sub": "Schedule a short conversation with the MTD Strategic team.",
-    "booking_button": "Schedule a Strategy Conversation",
+    "disclaimer": "This preliminary Snapshot is based on your self-reported responses and has not been independently verified. A more detailed review can help evaluate how these practices work in your organization and identify opportunities for improvement.",
+    "booking_heading": "Interested in exploring your results further?",
+    "booking_sub": "Schedule a complimentary 30-minute conversation to discuss your preliminary Snapshot and how the Cost Control Behaviors™ Framework may apply to your organization.",
+    "booking_button": "Schedule a Complimentary QuickCheck Review",
     "email_ratings_heading": "Your self-reported ratings",
     "email_ratings_note": "These are your own self-ratings, not confirmed performance grades.",
     "booking_url": "https://calendly.com/sacredplans/30min"
@@ -66,14 +66,14 @@
   "gate": {
     "kicker": "All ten questions answered",
     "title": "Your Snapshot is ready",
-    "sub": "Enter your email and phone to see your results on the next screen.",
+    "sub": "Enter your email to see your results on the next screen.",
     "email_label": "Email",
-    "phone_label": "Phone",
+    "phone_label": "Phone (optional)",
     "optional_note": "Optional — helps us tailor a conversation if you want one:",
     "state_label": "State / territory",
     "renewal_label": "Workers' comp renewal month",
     "interest_label": "I'm interested in",
     "button": "Show my Snapshot",
-    "privacy": "We use your details only to follow up about your results."
+    "privacy": "Your information will be used to deliver your Cost Control Behaviors™ QuickCheck results and, if requested, to follow up regarding your assessment. We respect your privacy and will not sell or share your contact information with third parties for their marketing purposes. Scheduling a follow-up conversation is entirely optional."
   }
 }
