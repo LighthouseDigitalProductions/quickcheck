@@ -351,6 +351,26 @@ function showScreen(id){
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   window.scrollTo(0,0);
+  tellParentTop();
+  reportHeight();
+}
+
+/* When the QuickCheck is embedded in another page (an iframe), tell that page
+   how tall we are so it can resize the frame, and ask it to scroll back to the
+   top of the frame when the screen changes. Harmless when not embedded. */
+const IN_FRAME = window.self !== window.top;
+function reportHeight(){
+  if (!IN_FRAME) return;
+  window.parent.postMessage({ type:'quickcheck-height', height: Math.ceil(document.body.getBoundingClientRect().height) }, '*');
+}
+function tellParentTop(){
+  if (!IN_FRAME) return;
+  window.parent.postMessage({ type:'quickcheck-top' }, '*');
+}
+if (IN_FRAME){
+  window.addEventListener('load', reportHeight);
+  window.addEventListener('resize', reportHeight);
+  if (window.ResizeObserver) new ResizeObserver(reportHeight).observe(document.body);
 }
 
 async function startQuiz(e){
@@ -462,7 +482,7 @@ async function bookConversation(){
       new Promise(r => setTimeout(r, 1500))
     ]);
   }
-  location.href = url;
+  if (IN_FRAME) window.open(url, '_blank', 'noopener'); else location.href = url;
 }
 
 function sendLeadAndWait(){
