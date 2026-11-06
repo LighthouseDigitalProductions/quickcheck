@@ -39,8 +39,8 @@
   "snapshot": {
     "title": "Your preliminary Cost Control Behaviors™ Snapshot",
     "pattern_intro": "Based on your responses, your overall pattern is",
-    "pattern_strong": "Strong reported foundation",
-    "pattern_developing": "Developing reported foundation",
+    "pattern_strong": "Strong foundation reported",
+    "pattern_developing": "Established practices with room for improvement",
     "pattern_several": "Improvement opportunities identified",
     "pattern_foundational": "Foundational practices to strengthen",
     "strength_label": "One reported strength",
