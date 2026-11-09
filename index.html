@@ -618,6 +618,10 @@ function snapshotEmailHtml(r){
     }
   });
   h += `<p style="${f}font-size:14px;color:#4a5a52;margin:22px 0 0;padding-top:14px;border-top:1px dashed #cfd8d2;">${escHtml(s.closing)}</p>`;
+  const bUrl = bookingUrl();
+  if (/^https?:\/\//i.test(bUrl)){
+    h += `<div style="background:#eaf5ee;border-radius:6px;padding:16px;margin:22px 0 0;text-align:center;"><div style="${f}font-size:16px;font-weight:bold;color:#1f5a3a;margin:0 0 6px;">${escHtml(s.booking_heading)}</div><div style="${f}font-size:14px;color:#4a5a52;margin:0 0 12px;">${escHtml(s.booking_sub)}</div><a href="${escHtml(bUrl)}" style="${f}display:inline-block;background:#1f5a3a;color:#ffffff;text-decoration:none;font-size:15px;font-weight:bold;padding:11px 20px;border-radius:4px;">${escHtml(s.booking_button)}</a><div style="${f}font-size:12px;color:#6b7a72;margin:10px 0 0;">${escHtml(bUrl)}</div></div>`;
+  }
   h += `<h3 style="${f}font-size:15px;margin:24px 0 6px;">${escHtml(s.email_ratings_heading)}</h3>`;
   h += `<p style="${f}font-size:13px;color:#4a5a52;margin:0 0 8px;">${escHtml(s.email_ratings_note)}</p>`;
   h += `<table style="border-collapse:collapse;width:100%;${f}font-size:14px;">`;
