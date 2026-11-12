@@ -5,9 +5,9 @@ backend:
   name: git-gateway
   branch: main
 
-# Changes Martin saves become a pull request for review, instead of
-# publishing straight to the live site.
-publish_mode: editorial_workflow
+# Changes Martin publishes go straight to the live site (no review step), so he
+# can edit the QuickCheck on his own without help from Lighthouse.
+publish_mode: simple
 
 # Required by Decap CMS even though this editor doesn't use image uploads.
 media_folder: "assets/uploads"
