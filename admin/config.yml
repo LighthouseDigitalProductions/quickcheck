@@ -85,21 +85,21 @@ collections:
             widget: "object"
             hint: "Average of the ten 1–5 ratings decides the overall pattern. Numbers must be between 1 and 5, and Strong ≥ Developing ≥ Several; otherwise the built-in defaults (4.5 / 3.5 / 2.5, minimums 3 / 2) are used. Changing these is a rule change — check with Lighthouse first."
             fields:
-              - { label: "Strong: minimum average", name: "strong_avg", widget: "number", value_type: "float", min: 1, max: 5, step: 0.1 }
-              - { label: "Strong: no single rating below", name: "strong_min", widget: "number", value_type: "float", min: 1, max: 5, step: 0.1 }
-              - { label: "Developing: minimum average", name: "developing_avg", widget: "number", value_type: "float", min: 1, max: 5, step: 0.1 }
-              - { label: "Developing: no single rating below", name: "developing_min", widget: "number", value_type: "float", min: 1, max: 5, step: 0.1 }
-              - { label: "Several practices to strengthen: minimum average", name: "several_avg", widget: "number", value_type: "float", min: 1, max: 5, step: 0.1 }
+              - { label: "Strong foundation reported: minimum average", name: "strong_avg", widget: "number", value_type: "float", min: 1, max: 5, step: 0.1 }
+              - { label: "Strong foundation reported: no single rating below", name: "strong_min", widget: "number", value_type: "float", min: 1, max: 5, step: 0.1 }
+              - { label: "Established practices with room for improvement: minimum average", name: "developing_avg", widget: "number", value_type: "float", min: 1, max: 5, step: 0.1 }
+              - { label: "Established practices with room for improvement: no single rating below", name: "developing_min", widget: "number", value_type: "float", min: 1, max: 5, step: 0.1 }
+              - { label: "Improvement opportunities identified: minimum average", name: "several_avg", widget: "number", value_type: "float", min: 1, max: 5, step: 0.1 }
           - label: "Preliminary Snapshot"
             name: "snapshot"
             widget: "object"
             fields:
               - { label: "Page title", name: "title", widget: "string" }
               - { label: "Intro to the overall pattern (before the pattern name)", name: "pattern_intro", widget: "string" }
-              - { label: "Pattern name: Strong", name: "pattern_strong", widget: "string" }
-              - { label: "Pattern name: Developing", name: "pattern_developing", widget: "string" }
-              - { label: "Pattern name: Several practices", name: "pattern_several", widget: "string" }
-              - { label: "Pattern name: Foundational", name: "pattern_foundational", widget: "string" }
+              - { label: "Overall pattern name: top level (Strong foundation reported)", name: "pattern_strong", widget: "string" }
+              - { label: "Overall pattern name: second level (Established practices with room for improvement)", name: "pattern_developing", widget: "string" }
+              - { label: "Overall pattern name: third level (Improvement opportunities identified)", name: "pattern_several", widget: "string" }
+              - { label: "Overall pattern name: lowest level (Foundational practices to strengthen)", name: "pattern_foundational", widget: "string" }
               - { label: "Label: reported strength", name: "strength_label", widget: "string" }
               - { label: "Label: area to examine", name: "area_label", widget: "string" }
               - { label: "Label: area to examine when all ten are rated 4 or 5", name: "area_label_validate", widget: "string" }
