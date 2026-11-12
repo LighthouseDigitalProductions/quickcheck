@@ -24,6 +24,12 @@ collections:
           - label: "Questions"
             name: "questions"
             widget: "list"
+            # The QuickCheck, the lead sheet and the automation are built for
+            # exactly 10 questions, so the list can be edited but not added to or
+            # shortened.
+            allow_add: false
+            min: 10
+            max: 10
             summary: "{{fields.title}}"
             fields:
               - { label: "Title (keep the leading number, e.g. '1. Timely Injury Reporting')", name: "title", widget: "string" }
