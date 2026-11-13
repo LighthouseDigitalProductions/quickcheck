@@ -20,7 +20,7 @@
       "title": "3. Medical Direction and Provider Coordination",
       "text": "Employees and supervisors know where an injured employee should receive appropriate medical care, and the organization coordinates the initial treatment process.",
       "implication": "Gaps in coordination can make it harder to align treatment, work restrictions, and recovery with the employee's actual duties.",
-      "prompt": "How do you coordinate appropriate care and share job duties with the provider when an injury occurs?",
+      "prompt": "How do you coordinate appropriate care and share job duties immediately with the provider when an injury occurs?",
       "validation": "% of cases using designated/appropriate providers where permitted; time from injury to coordinated medical follow-up.",
       "improve": "Make sure employees and supervisors know, in advance, where injured employees should go for initial treatment, and coordinate that first medical visit directly rather than leaving it to the employee."
     },
