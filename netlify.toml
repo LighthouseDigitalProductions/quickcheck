@@ -1,0 +1,6 @@
+# The QuickCheck itself is served by GitHub Pages. Netlify only hosts the
+# content editor (/admin) and its login, so rebuild Netlify only when the
+# admin folder changes. Content edits (questions.json, site-content.json)
+# then cost no Netlify credits. Exit 0 = skip the build, exit 1 = build.
+[build]
+  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- admin/"
