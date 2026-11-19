@@ -4,17 +4,42 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>QuickCheck Editor Sign-Up</title>
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <style>
+    body{font-family:sans-serif;max-width:420px;margin:60px auto;padding:0 20px}
+    input,button{font-size:16px;padding:10px;width:100%;box-sizing:border-box;margin-top:10px}
+    button{background:#15803d;color:#fff;border:0;border-radius:6px;cursor:pointer}
+    #msg{margin-top:16px;white-space:pre-wrap}
+  </style>
 </head>
 <body>
-  <p style="font-family:sans-serif;padding:24px">Setting up your editor login&hellip;</p>
+  <h2>Create your editor password</h2>
+  <p>Choose a password for the QuickCheck content editor.</p>
+  <input id="pw" type="password" placeholder="New password (8+ characters)" />
+  <button id="go">Set password</button>
+  <div id="msg"></div>
   <script>
-    netlifyIdentity.init({
-      APIUrl: "https://mtd-quickcheck-editor.netlify.app/.netlify/identity"
-    });
-    netlifyIdentity.on("login", function () {
-      document.location.href = "/admin/";
-    });
+    var m = location.hash.match(/invite_token=([^&]+)/);
+    var token = m ? m[1] : "";
+    var msg = document.getElementById("msg");
+    if (!token) { msg.textContent = "No invite token found in this link. Open the link from your invitation email again, with admin/signup.html added."; }
+    document.getElementById("go").onclick = function () {
+      var pw = document.getElementById("pw").value;
+      if (pw.length < 8) { msg.textContent = "Please use at least 8 characters."; return; }
+      msg.textContent = "Working...";
+      fetch("/.netlify/identity/verify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ type: "signup", token: token, password: pw })
+      }).then(function (r) {
+        return r.text().then(function (t) { return { ok: r.ok, status: r.status, text: t }; });
+      }).then(function (res) {
+        if (res.ok) {
+          msg.innerHTML = 'Password set. <a href="/admin/">Go to the editor</a> and sign in with your email and this password.';
+        } else {
+          msg.textContent = "Could not set the password (" + res.status + "):\n" + res.text;
+        }
+      }).catch(function (e) { msg.textContent = "Network error: " + e; });
+    };
   </script>
 </body>
 </html>
