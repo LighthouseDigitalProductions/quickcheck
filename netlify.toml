@@ -4,3 +4,11 @@
 # then cost no Netlify credits. Exit 0 = skip the build, exit 1 = build.
 [build]
   ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- admin/"
+  
+# Invite and password-reset emails land on the home page. Forward them to the
+# sign-up page and keep the #invite_token part of the address.
+[[redirects]]
+  from = "/"
+  to = "/admin/signup.html"
+  status = 302
+  force = true
